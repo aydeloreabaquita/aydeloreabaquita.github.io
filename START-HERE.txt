@@ -1,15 +1,19 @@
-FINAL PORTFOLIO FOLDER
+AYDELORE PORTFOLIO — ANIMATED MORPHIC GLASS REVISION
 
-1. Extract this ZIP.
-2. Keep your existing Git repository connection: copy the contents of this folder into your current aydeleoreabaquita.github.io repository folder and choose Replace. Do not delete the hidden .git folder.
-3. Open index.html with Live Server to preview.
-4. In VS Code Terminal run:
+This version keeps your black, pastel-pink, and pastel-violet colors.
+It adds moving background circles and clearer translucent glass panels.
+
+INSTALLATION
+1. Extract the ZIP.
+2. Copy all files inside the folder.
+3. Paste them into your existing aydeloreabaquita.github.io folder.
+4. Do not delete the hidden .git folder.
+5. Preview index.html with Live Server.
+6. Publish with:
+
    git add -A
-   git commit -m "Apply final portfolio revision"
+   git commit -m "Apply animated morphic glass theme"
    git push origin main
 
-Resume path:
-assets/resume - Aydelore Abaquita.pdf
-
-Images are already included under assets/images.
-Add your own MP4 files under assets/videos using the filenames listed in README.md.
+The circle movement is made with CSS, so no extra library or JavaScript is needed.
+Visitors who have reduced-motion enabled will see stationary circles.

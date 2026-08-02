@@ -1,3 +1,19 @@
+// Keep the ambient circle animation on one shared timeline across page changes.
+// sessionStorage survives navigation within the same browser tab, so each page
+// resumes the orbs at the same animation phase and direction.
+(function syncAmbientMotionTimeline() {
+  const storageKey = 'aydelore-ambient-motion-start';
+  let startTime = Number(sessionStorage.getItem(storageKey));
+
+  if (!Number.isFinite(startTime) || startTime <= 0) {
+    startTime = Date.now();
+    sessionStorage.setItem(storageKey, String(startTime));
+  }
+
+  const elapsedSeconds = (Date.now() - startTime) / 1000;
+  document.documentElement.style.setProperty('--motion-offset', `-${elapsedSeconds}s`);
+})();
+
 const header = document.querySelector('.site-header');
 const menuToggle = document.querySelector('.menu-toggle');
 const primaryNav = document.querySelector('.primary-nav');
@@ -11,21 +27,25 @@ const videoPlayer = document.querySelector('#portfolio-video-player');
 const videoStatus = document.querySelector('#video-status');
 const videoFilePath = document.querySelector('#video-file-path');
 
-window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 8);
-});
-
-menuToggle.addEventListener('click', () => {
-  const isOpen = primaryNav.classList.toggle('open');
-  menuToggle.setAttribute('aria-expanded', String(isOpen));
-});
-
-primaryNav.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => {
-    primaryNav.classList.remove('open');
-    menuToggle.setAttribute('aria-expanded', 'false');
+if (header) {
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 8);
   });
-});
+}
+
+if (menuToggle && primaryNav) {
+  menuToggle.addEventListener('click', () => {
+    const isOpen = primaryNav.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  primaryNav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      primaryNav.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
 
 function activateRole(tab) {
   const roleName = tab.dataset.role;
@@ -92,17 +112,21 @@ function revealVisibleItems(scope = document) {
 }
 revealVisibleItems();
 
-document.querySelectorAll('.design-card').forEach((card) => {
-  card.addEventListener('click', () => {
-    lightbox.querySelector('img').src = card.dataset.lightbox;
-    lightbox.querySelector('p').textContent = card.dataset.caption;
-    lightbox.showModal();
-    document.body.classList.add('dialog-open');
+if (lightbox) {
+  document.querySelectorAll('.design-card').forEach((card) => {
+    card.addEventListener('click', () => {
+      const image = lightbox.querySelector('img');
+      const caption = lightbox.querySelector('p');
+      if (image) image.src = card.dataset.lightbox || '';
+      if (caption) caption.textContent = card.dataset.caption || '';
+      lightbox.showModal();
+      document.body.classList.add('dialog-open');
+    });
   });
-});
+}
 
 function closeDialog(dialog) {
-  if (dialog.open) dialog.close();
+  if (dialog?.open) dialog.close();
   document.body.classList.remove('dialog-open');
 }
 
@@ -110,7 +134,7 @@ document.querySelectorAll('.lightbox-close').forEach((button) => {
   button.addEventListener('click', () => closeDialog(button.closest('dialog')));
 });
 
-[lightbox, videoModal].forEach((dialog) => {
+[lightbox, videoModal].filter(Boolean).forEach((dialog) => {
   dialog.addEventListener('click', (event) => {
     if (event.target === dialog) closeDialog(dialog);
   });
@@ -118,21 +142,23 @@ document.querySelectorAll('.lightbox-close').forEach((button) => {
 });
 
 function resetVideoModal() {
+  if (!videoPlayer) return;
   videoPlayer.pause();
   videoPlayer.removeAttribute('src');
   videoPlayer.load();
   videoPlayer.hidden = true;
-  videoStatus.hidden = false;
+  if (videoStatus) videoStatus.hidden = false;
 }
 
 function openPortfolioVideo(videoPath) {
+  if (!videoModal || !videoPlayer) return;
   resetVideoModal();
-  videoFilePath.textContent = videoPath || 'assets/videos/your-video.mp4';
+  if (videoFilePath) videoFilePath.textContent = videoPath || 'assets/videos/your-video.mp4';
 
   if (videoPath) {
     videoPlayer.src = videoPath;
     videoPlayer.hidden = false;
-    videoStatus.hidden = true;
+    if (videoStatus) videoStatus.hidden = true;
     videoPlayer.load();
   }
 
@@ -140,10 +166,12 @@ function openPortfolioVideo(videoPath) {
   document.body.classList.add('dialog-open');
 }
 
-videoPlayer.addEventListener('error', () => {
-  videoPlayer.hidden = true;
-  videoStatus.hidden = false;
-});
+if (videoPlayer) {
+  videoPlayer.addEventListener('error', () => {
+    videoPlayer.hidden = true;
+    if (videoStatus) videoStatus.hidden = false;
+  });
+}
 
 document.querySelectorAll('.video-demo-button').forEach((button) => {
   button.addEventListener('click', () => {
@@ -152,15 +180,16 @@ document.querySelectorAll('.video-demo-button').forEach((button) => {
   });
 });
 
-videoModal.addEventListener('close', resetVideoModal);
+if (videoModal) videoModal.addEventListener('close', resetVideoModal);
 
 document.querySelectorAll('[data-placeholder-link]').forEach((link) => {
   link.addEventListener('click', (event) => {
     if (link.getAttribute('href') === '#') {
       event.preventDefault();
-      window.alert('Replace this placeholder link with your published Google Sheet, demo, or project URL.');
+      window.alert('Replace this placeholder link with your published project URL.');
     }
   });
 });
 
-document.querySelector('#current-year').textContent = new Date().getFullYear();
+const currentYear = document.querySelector('#current-year');
+if (currentYear) currentYear.textContent = new Date().getFullYear();
