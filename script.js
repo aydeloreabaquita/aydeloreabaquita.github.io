@@ -200,19 +200,26 @@ if (currentYear) currentYear.textContent = new Date().getFullYear();
    ================================================== */
 
 (() => {
-  const saberSelector = [
-    ".hero-card",
-    ".page-link-card",
-    ".role-panel",
-    ".design-card",
-    ".demo-card",
-    ".video-project",
-    ".skill-column",
-    ".contact-card",
-    ".about-copy",
-    ".learning-banner",
-    ".discipline-list article"
-  ].join(",");
+const saberSelector = [
+  /* Home: Portfolio box and portrait box */
+  ".page-home .hero-copy",
+  ".page-home .hero-card",
+
+  /* About: upper introduction box only */
+  ".page-about .page-intro",
+
+  /* Experience: keep the current active role panel effect */
+  ".page-experience .role-panel",
+
+  /* Work: Designs, systems, and digital experiments box only */
+  ".page-work .page-intro",
+
+  /* Skills: A practical toolkit built... box only */
+  ".page-skills .page-intro",
+
+  /* Contact: upper introduction box only */
+  ".page-contact .page-intro"
+].join(",");
 
   const targets = [...document.querySelectorAll(saberSelector)];
 
