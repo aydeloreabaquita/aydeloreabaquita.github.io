@@ -1940,3 +1940,14 @@ dialog {
     opacity: 0.35;
   }
 }
+
+/* Keep the opening About paragraph the same size as the body text */
+.page-about .about-copy .large-copy {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 400;
+  line-height: inherit;
+  letter-spacing: normal;
+  color: var(--text-soft);
+  margin-bottom: 16px;
+}
