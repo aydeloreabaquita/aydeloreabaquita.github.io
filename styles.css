@@ -1812,11 +1812,29 @@ dialog {
 }
 
 @media (max-width: 860px) {
-  .orb-one { right: -42%; top: 8%; }
-  .orb-two { right: -3%; top: 58%; }
-  .orb-three { right: 46%; top: 38%; }
-  .orb-four { right: -35%; bottom: -8%; }
-  .orb-glass { right: 5%; top: 20%; opacity: .16; }
+.orb-one {
+  animation: orbFloatOne 11s ease-in-out infinite alternate;
+}
+
+.orb-two {
+  animation: orbFloatTwo 9s ease-in-out infinite alternate;
+}
+
+.orb-three {
+  animation: orbFloatThree 7s ease-in-out infinite alternate;
+}
+
+.orb-four {
+  animation: orbFloatFour 13s ease-in-out infinite alternate;
+}
+
+.orb-five {
+  animation: orbFloatFive 10s ease-in-out infinite alternate;
+}
+
+.orb-glass {
+  animation: glassFloat 11s ease-in-out infinite alternate;
+}
 }
 
 @media (prefers-reduced-motion: reduce) {
