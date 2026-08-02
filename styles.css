@@ -1825,3 +1825,137 @@ dialog {
     animation: none !important;
   }
 }
+
+/* =========================
+   SABER LIGHT FRAME EFFECT
+   ========================= */
+
+/* Apply to the cards / frames you want */
+.hero-card,
+.page-link-card,
+.role-panel,
+.design-card,
+.demo-card,
+.skill-column,
+.contact-card,
+.video-project,
+.work-panel,
+.about-copy,
+.learning-banner,
+.discipline-list article {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Animated light border */
+.hero-card::before,
+.page-link-card::before,
+.role-panel::before,
+.design-card::before,
+.demo-card::before,
+.skill-column::before,
+.contact-card::before,
+.video-project::before,
+.work-panel::before,
+.about-copy::before,
+.learning-banner::before,
+.discipline-list article::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from 0deg,
+    rgba(255, 255, 255, 0) 0deg,
+    rgba(255, 255, 255, 0) 260deg,
+    rgba(255, 150, 230, 0.95) 300deg,
+    rgba(190, 150, 255, 1) 325deg,
+    rgba(255, 255, 255, 0.95) 340deg,
+    rgba(255, 255, 255, 0) 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: saberSweep 8s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+  filter: blur(0.4px);
+  opacity: 0.9;
+}
+
+/* Optional soft glow */
+.hero-card::after,
+.page-link-card::after,
+.role-panel::after,
+.design-card::after,
+.demo-card::after,
+.skill-column::after,
+.contact-card::after,
+.video-project::after,
+.work-panel::after,
+.about-copy::after,
+.learning-banner::after,
+.discipline-list article::after {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 140, 220, 0.08),
+    rgba(180, 140, 255, 0.05),
+    transparent 65%
+  );
+  opacity: 0.6;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Make sure card content stays above glow */
+.hero-card > *,
+.page-link-card > *,
+.role-panel > *,
+.design-card > *,
+.demo-card > *,
+.skill-column > *,
+.contact-card > *,
+.video-project > *,
+.work-panel > *,
+.about-copy > *,
+.learning-banner > *,
+.discipline-list article > * {
+  position: relative;
+  z-index: 3;
+}
+
+/* Slow motion */
+@keyframes saberSweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hero-card::before,
+  .page-link-card::before,
+  .role-panel::before,
+  .design-card::before,
+  .demo-card::before,
+  .skill-column::before,
+  .contact-card::before,
+  .video-project::before,
+  .work-panel::before,
+  .about-copy::before,
+  .learning-banner::before,
+  .discipline-list article::before {
+    animation: none;
+  }
+}
