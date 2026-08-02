@@ -1,390 +1,678 @@
 <!DOCTYPE html>
-<!-- MEDIA PATH FIX: images and videos are stored in the repository root -->
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="Portfolio of Aydelore Abaquita — administration, customer support, technical writing, Google Forms and Sheets automation, and creative design." name="description"/>
-<title>Aydelore Abaquita | Portfolio</title>
-<style>
-    :root{
-      --ink:#112532;
-      --ink-2:#405a69;
-      --paper:#f7fafb;
-      --white:#ffffff;
-      --line:#dce6eb;
-      --accent:#2e8f8b;
-      --accent-2:#8ad8d1;
-      --navy:#0c2534;
-      --warm:#f2c36b;
-      --shadow:0 18px 55px rgba(12,37,52,.10);
-      --radius:24px;
-      --max:1160px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}
-    a{color:inherit}
-    img{max-width:100%;display:block}
-    .container{width:min(calc(100% - 40px),var(--max));margin-inline:auto}
-    .eyebrow{margin:0 0 10px;text-transform:uppercase;letter-spacing:.17em;font-size:.76rem;font-weight:800;color:var(--accent)}
-    .section-title{margin:0;font-size:clamp(2rem,4vw,3.35rem);line-height:1.06;letter-spacing:-.045em}
-    .section-intro{max-width:700px;margin:18px 0 0;color:var(--ink-2);font-size:1.04rem}
-    .section-head{display:flex;align-items:end;justify-content:space-between;gap:35px;margin-bottom:42px}
-    section{padding:94px 0;scroll-margin-top:76px}
-    .skip{position:absolute;left:-10000px;top:auto}.skip:focus{left:15px;top:15px;z-index:1000;background:#fff;padding:10px 14px;border-radius:10px}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Aydelore Abaquita — administrator, customer support specialist, fraud analyst, technical writer, ESL teacher, graphic designer, and automation enthusiast." />
+  <meta name="theme-color" content="#0a0a0a" />
 
-    /* Navigation */
-    .nav-shell{position:sticky;top:0;z-index:50;background:rgba(247,250,251,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(220,230,235,.75)}
-    nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px}
-    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:850;letter-spacing:-.02em}
-    .brand-mark{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--navy);color:#fff;font-size:.82rem;box-shadow:0 8px 22px rgba(12,37,52,.2)}
-    .nav-links{display:flex;align-items:center;gap:26px}
-    .nav-links a{text-decoration:none;color:var(--ink-2);font-size:.91rem;font-weight:720}
-    .nav-links a:hover{color:var(--accent)}
-    .nav-cta{padding:10px 15px!important;border-radius:999px;background:var(--navy);color:white!important}
-    .menu-button{display:none;border:0;background:transparent;font-size:1.5rem;color:var(--ink);cursor:pointer}
+  <meta property="og:title" content="Aydelore Abaquita — Portfolio" />
+  <meta property="og:description" content="Operations, support, analysis, writing, automation, and creative work." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/images/og-cover.svg" />
 
-    /* Hero */
-    .hero{padding:82px 0 66px;position:relative;overflow:hidden}
-    .hero:before{content:"";position:absolute;width:540px;height:540px;border-radius:50%;right:-185px;top:-240px;background:radial-gradient(circle at 35% 35%,rgba(138,216,209,.7),rgba(138,216,209,0));pointer-events:none}
-    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:74px;align-items:center}
-    .availability{display:inline-flex;align-items:center;gap:9px;padding:8px 12px;border:1px solid #cfe0e4;background:rgba(255,255,255,.75);border-radius:999px;color:var(--ink-2);font-weight:720;font-size:.83rem}
-    .availability:before{content:"";width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px rgba(46,143,139,.13)}
-    h1{font-size:clamp(3.25rem,7.1vw,6.8rem);line-height:.9;letter-spacing:-.072em;margin:26px 0 24px;max-width:800px}
-    h1 span{display:block;color:var(--accent)}
-    .hero-copy{max-width:690px;font-size:1.15rem;color:var(--ink-2)}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:32px}
-    .button{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 18px;border-radius:13px;text-decoration:none;font-weight:780;border:1px solid var(--navy);transition:.2s ease}
-    .button.primary{background:var(--navy);color:#fff}.button.primary:hover{transform:translateY(-2px);box-shadow:0 12px 25px rgba(12,37,52,.18)}
-    .button.secondary{background:#fff;color:var(--navy);border-color:var(--line)}.button.secondary:hover{border-color:var(--accent);color:var(--accent)}
-    .hero-card{position:relative;background:var(--navy);color:#fff;border-radius:34px;padding:34px;min-height:510px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between}
-    .hero-card:before{content:"";position:absolute;inset:auto -70px -120px auto;width:340px;height:340px;border:1px solid rgba(255,255,255,.16);border-radius:50%}
-    .hero-card:after{content:"";position:absolute;inset:auto -10px -80px auto;width:230px;height:230px;background:var(--accent);border-radius:50%;opacity:.88}
-    .initials{position:relative;z-index:2;width:118px;height:118px;border-radius:30px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent-2),var(--accent));color:var(--navy);font-size:2.35rem;font-weight:900;letter-spacing:-.06em}
-    .hero-card h2{position:relative;z-index:2;font-size:2rem;line-height:1.1;letter-spacing:-.04em;margin:0 0 10px}
-    .hero-card p{position:relative;z-index:2;color:#c9dbe3;margin:0;max-width:320px}
-    .mini-stats{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:25px}
-    .mini-stat{padding:15px;background:rgba(255,255,255,.075);border:1px solid rgba(255,255,255,.11);border-radius:16px}
-    .mini-stat strong{display:block;font-size:1.3rem;color:#fff}.mini-stat span{font-size:.79rem;color:#b8d0db}
-
-    /* Strengths */
-    .strengths{padding-top:20px}
-    .strength-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .strength{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 8px 25px rgba(12,37,52,.04)}
-    .strength .num{font-size:.76rem;color:var(--accent);font-weight:850;letter-spacing:.13em}.strength h3{margin:20px 0 8px;font-size:1.06rem}.strength p{margin:0;color:var(--ink-2);font-size:.9rem}
-
-    /* About */
-    .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:start}
-    .about-panel{position:sticky;top:112px;background:#fff;border-radius:var(--radius);padding:30px;border:1px solid var(--line);box-shadow:var(--shadow)}
-    .about-panel h3{margin:0 0 14px;font-size:1.5rem}.about-panel p{color:var(--ink-2);margin:0 0 24px}
-    .contact-list{display:grid;gap:11px}.contact-list a{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;text-decoration:none;border:1px solid var(--line);border-radius:13px;color:var(--ink-2);font-weight:700}.contact-list a:hover{border-color:var(--accent);color:var(--accent)}
-    .capabilities{display:grid;gap:22px}.capability{display:grid;grid-template-columns:54px 1fr;gap:18px;padding-bottom:22px;border-bottom:1px solid var(--line)}.capability:last-child{border:0}.capability-icon{width:54px;height:54px;border-radius:16px;background:#e8f5f4;color:var(--accent);display:grid;place-items:center;font-weight:900}.capability h3{margin:2px 0 6px;font-size:1.16rem}.capability p{margin:0;color:var(--ink-2)}
-
-    /* Experience */
-    .experience-section{background:#fff}
-    .timeline{position:relative;display:grid;gap:0}.timeline:before{content:"";position:absolute;left:176px;top:12px;bottom:12px;width:1px;background:var(--line)}
-    .role{display:grid;grid-template-columns:150px 1fr;gap:54px;padding:25px 0;position:relative}.role:after{content:"";position:absolute;left:170px;top:36px;width:13px;height:13px;border:4px solid #fff;border-radius:50%;background:var(--accent);box-shadow:0 0 0 1px var(--accent)}
-    .role-date{color:var(--accent);font-size:.87rem;font-weight:820;padding-top:6px}.role-card{padding:0 0 24px}.role-card h3{margin:0;font-size:1.35rem;letter-spacing:-.02em}.company{color:var(--ink-2);font-weight:760;margin:4px 0 9px}.role-card p{margin:0;color:var(--ink-2);max-width:760px}
-
-    /* Tools */
-    .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.tool-card{background:#fff;border:1px solid var(--line);padding:23px;border-radius:18px}.tool-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}.tool-card h3{margin:0;font-size:1.05rem}.tool-level{font-size:.72rem;font-weight:850;text-transform:uppercase;letter-spacing:.09em;color:var(--accent)}.meter{height:7px;background:#e6eef1;border-radius:20px;overflow:hidden}.meter span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:20px}.tool-card p{margin:14px 0 0;color:var(--ink-2);font-size:.9rem}
-
-    /* Featured projects */
-    .project-stack{display:grid;gap:30px}
-    .project-feature{display:grid;grid-template-columns:1.05fr .95fr;overflow:hidden;background:var(--navy);color:#fff;border-radius:30px;box-shadow:var(--shadow)}
-    .project-feature.attendance-project{background:linear-gradient(135deg,#173e51,#0c2534)}
-    .project-copy{padding:54px}.project-copy .eyebrow{color:var(--accent-2)}.project-copy h3{font-size:clamp(2rem,4vw,3.25rem);line-height:1.02;letter-spacing:-.045em;margin:0 0 20px}.project-copy p{color:#c6d8df;max-width:600px}.project-tags{display:flex;flex-wrap:wrap;gap:9px;margin:25px 0 31px}.tag{padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);font-size:.79rem;font-weight:740;color:#dcebf0}.project-actions{display:flex;flex-wrap:wrap;gap:12px}
-    .sheet-visual{min-height:465px;padding:38px;background:linear-gradient(145deg,#dcefeb,#f9fbfb);display:flex;align-items:center}.sheet-window{width:100%;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 25px 50px rgba(12,37,52,.18);transform:rotate(1.5deg)}.sheet-bar{height:41px;background:#edf3f5;display:flex;align-items:center;gap:7px;padding:0 14px}.dot{width:9px;height:9px;border-radius:50%;background:#b8c6cc}.sheet-grid{display:grid;grid-template-columns:repeat(5,1fr);grid-auto-rows:38px;padding:10px}.cell{border-right:1px solid #edf1f3;border-bottom:1px solid #edf1f3}.cell.header{background:#d8efec}.cell.highlight{background:#f6e7bd}.cell.status{position:relative}.cell.status:after{content:"";position:absolute;left:22%;right:22%;top:40%;height:7px;background:#6bbab5;border-radius:20px}
-    .form-visual{min-height:465px;padding:38px;background:linear-gradient(145deg,#e5e1f6,#f9fbfb);display:flex;align-items:center;justify-content:center}.form-flow{width:100%;display:grid;grid-template-columns:minmax(0,1fr) 58px minmax(0,.8fr);align-items:center}.form-window,.response-sheet{background:#fff;border-radius:18px;box-shadow:0 25px 50px rgba(12,37,52,.18);overflow:hidden}.form-window{transform:rotate(-1.2deg)}.form-accent{height:12px;background:#7248b9}.form-body{padding:24px}.form-title{margin:0 0 6px;color:#202124;font-size:1.25rem;line-height:1.2}.form-helper{margin:0 0 22px;color:#5f6368;font-size:.76rem}.form-question{margin-top:17px}.form-label{display:block;color:#303134;font-size:.78rem;font-weight:760;margin-bottom:8px}.fake-select{height:36px;border:1px solid #dadce0;border-radius:7px;display:flex;align-items:center;justify-content:space-between;padding:0 10px;color:#6b7075;font-size:.72rem}.radio-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.radio-pill{display:flex;align-items:center;gap:7px;border:1px solid #dadce0;border-radius:8px;padding:9px;color:#4a4d51;font-size:.7rem}.radio-dot{width:11px;height:11px;border:2px solid #7248b9;border-radius:50%}.fake-submit{display:inline-block;margin-top:20px;background:#7248b9;color:#fff;border-radius:6px;padding:8px 17px;font-size:.73rem;font-weight:800}.flow-arrow{display:grid;place-items:center;color:#476b78;font-size:2rem;font-weight:900}.response-sheet{transform:rotate(1.5deg)}.response-bar{height:36px;background:#e6f4ea;display:flex;align-items:center;padding:0 12px;color:#23663d;font-size:.68rem;font-weight:850;letter-spacing:.04em}.response-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-auto-rows:31px;padding:9px}.response-cell{border-right:1px solid #edf1f3;border-bottom:1px solid #edf1f3}.response-cell.head{background:#d8efec}.response-cell.mark{position:relative}.response-cell.mark:after{content:"";position:absolute;left:18%;right:18%;top:42%;height:6px;background:#6bbab5;border-radius:10px}
-
-    /* Work galleries */
-    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.work-card{background:#fff;border:1px solid var(--line);border-radius:19px;overflow:hidden;transition:.22s ease}.work-card:hover{transform:translateY(-5px);box-shadow:0 18px 36px rgba(12,37,52,.1)}.work-media{aspect-ratio:4/3;overflow:hidden;background:#e9f0f2}.work-media img{width:100%;height:100%;object-fit:cover;transition:.3s ease}.work-card:hover img{transform:scale(1.025)}.work-info{padding:19px}.work-info .type{font-size:.71rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-weight:850}.work-info h3{font-size:1.05rem;margin:7px 0 5px}.work-info p{font-size:.88rem;color:var(--ink-2);margin:0}.placeholder-note{display:inline-block;margin-top:12px;font-size:.77rem;padding:5px 8px;background:#f1f6f7;border-radius:7px;color:#617985}
-    .videos{background:#edf4f5}.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:19px}.video-card{display:block;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:19px;overflow:hidden}.video-media{aspect-ratio:16/9;position:relative;overflow:hidden}.video-media img{width:100%;height:100%;object-fit:cover}.play{position:absolute;inset:0;display:grid;place-items:center}.play span{width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;color:var(--navy);font-size:1.35rem;padding-left:4px;box-shadow:0 12px 28px rgba(0,0,0,.22)}.video-info{padding:18px}.video-info h3{margin:0 0 5px;font-size:1.05rem}.video-info p{margin:0;color:var(--ink-2);font-size:.88rem}
-
-    /* Contact */
-    .contact-wrap{background:linear-gradient(135deg,var(--navy),#173e51);color:#fff;border-radius:34px;padding:65px;position:relative;overflow:hidden}.contact-wrap:after{content:"AA";position:absolute;right:-20px;bottom:-100px;font-size:18rem;font-weight:900;line-height:1;color:rgba(255,255,255,.035);letter-spacing:-.1em}.contact-wrap h2{font-size:clamp(2.4rem,5vw,4.7rem);line-height:.98;letter-spacing:-.055em;margin:0 0 18px;max-width:780px}.contact-wrap p{color:#c7d9e0;max-width:650px;font-size:1.06rem}.contact-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;position:relative;z-index:2}.contact-actions .button.primary{background:var(--accent);border-color:var(--accent);color:#071d27}.contact-actions .button.secondary{background:transparent;border-color:rgba(255,255,255,.25);color:#fff}
-    footer{padding:30px 0 38px;color:var(--ink-2);font-size:.86rem}.footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center}.footer-links{display:flex;gap:17px}.footer-links a{text-decoration:none}.footer-links a:hover{color:var(--accent)}
-
-    .reveal{opacity:0;transform:translateY(18px);transition:.55s ease}.reveal.visible{opacity:1;transform:none}
-    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.work-card,.work-media img,.button{transition:none}}
-    @media (max-width:900px){
-      .menu-button{display:block}.nav-links{display:none;position:absolute;top:76px;left:20px;right:20px;background:#fff;border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow);padding:18px;flex-direction:column;align-items:stretch}.nav-links.open{display:flex}.nav-links a{padding:7px 5px}.nav-cta{text-align:center}
-      .hero-grid,.about-grid,.project-feature{grid-template-columns:1fr}.hero-card{min-height:420px}.strength-grid{grid-template-columns:repeat(2,1fr)}.about-panel{position:static}.tools-grid,.gallery,.video-grid{grid-template-columns:repeat(2,1fr)}.sheet-visual,.form-visual{min-height:380px}.form-flow{max-width:700px;margin-inline:auto}.timeline:before{left:7px}.role{grid-template-columns:1fr;gap:7px;padding-left:34px}.role:after{left:1px;top:34px}.role-date{padding:0}.project-copy{padding:42px}.contact-wrap{padding:48px}
-    }
-    @media (max-width:580px){
-      .container{width:min(calc(100% - 26px),var(--max))}section{padding:72px 0}.hero{padding-top:57px}.hero-grid{gap:38px}h1{font-size:3.55rem}.hero-card{padding:27px}.strength-grid,.tools-grid,.gallery,.video-grid{grid-template-columns:1fr}.section-head{display:block}.mini-stats{grid-template-columns:1fr 1fr}.project-copy{padding:32px 25px}.sheet-visual,.form-visual{padding:22px;min-height:300px}.form-flow{grid-template-columns:1fr;gap:17px}.flow-arrow{transform:rotate(90deg);font-size:1.55rem}.project-actions .button{width:100%}.contact-wrap{padding:40px 25px}.footer-row{align-items:flex-start;flex-direction:column}.hero-actions .button{width:100%}
-    }
-    @media print{.nav-shell,.hero-actions,.contact-actions,.placeholder-note{display:none!important}body{background:#fff}.hero{padding-top:35px}section{padding:45px 0}.reveal{opacity:1;transform:none}.hero-card,.project-feature,.contact-wrap{-webkit-print-color-adjust:exact;print-color-adjust:exact}.work-card,.tool-card,.strength{break-inside:avoid}}
-  
-    /* Uploaded portfolio samples */
-    .work-media-link{display:block;text-decoration:none}
-    .work-media{aspect-ratio:4/3}
-    .work-media.template{background:linear-gradient(135deg,#f5f8f9,#e7eef1)}
-    .work-media.template img,.work-media.process img{object-fit:contain;padding:10px}
-    .work-media.process{background:#273038}
-    .work-media.poster img{object-position:center top}
-    .view-note{display:inline-block;margin-top:13px;color:var(--accent);font-size:.78rem;font-weight:800}
-    .single-video{grid-template-columns:minmax(0,900px);justify-content:center}
-    .featured-video{cursor:default}
-    .video-media.actual-video{aspect-ratio:16/9;background:#07151e}
-    .video-media.actual-video video{width:100%;height:100%;display:block;object-fit:contain;background:#07151e}
-</style>
+  <title>Aydelore Abaquita — Portfolio</title>
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="nav-shell">
-<nav aria-label="Primary navigation" class="container">
-<a class="brand" href="#top"><span class="brand-mark">AA</span><span>Aydelore Abaquita</span></a>
-<button aria-expanded="false" aria-label="Open navigation" class="menu-button">☰</button>
-<div class="nav-links">
-<a href="#about">About</a>
-<a href="#experience">Experience</a>
-<a href="#tools">Tools</a>
-<a href="#projects">Projects</a>
-<a href="#creative-work">Creative Work</a>
-<a class="nav-cta" href="#contact">Contact</a>
-</div>
-</nav>
-</header>
-<main id="main">
-<section class="hero" id="top">
-<div class="container hero-grid">
-<div>
-<span class="availability">Open to remote opportunities</span>
-<h1>Organized work.<span>Creative results.</span></h1>
-<p class="hero-copy">I’m Aydelore, a multidisciplinary professional with more than eight years of experience across administration, customer support, fraud analysis, technical writing, spreadsheet automation, social media, and creative production.</p>
-<div class="hero-actions">
-<a class="button primary" href="#creative-work">View my work <span aria-hidden="true">→</span></a>
-<a class="button secondary" href="Aydelore_Abaquita_Resume.pdf" rel="noopener" target="_blank">Open résumé</a>
-<a class="button secondary" href="mailto:aabaquita22@gmail.com">Email me</a>
-</div>
-</div>
-<aside aria-label="Portfolio summary" class="hero-card">
-<div class="initials">AA</div>
-<div>
-<h2>Reliable support from operations to creative execution.</h2>
-<p>Detail-focused, adaptable, and committed to making workflows clearer, faster, and easier to manage.</p>
-<div class="mini-stats">
-<div class="mini-stat"><strong>8+ years</strong><span>Professional experience</span></div>
-<div class="mini-stat"><strong>5 areas</strong><span>Support, admin, writing, data, creative</span></div>
-</div>
-</div>
-</aside>
-</div>
-</section>
-<div aria-label="Core strengths" class="container strengths reveal">
-<div class="strength-grid">
-<article class="strength"><span class="num">01</span><h3>Administration</h3><p>Player communication, profile tracking, file organization, follow-ups, and timeline monitoring.</p></article>
-<article class="strength"><span class="num">02</span><h3>Customer Support</h3><p>Technical troubleshooting, billing assistance, claims, dispute resolution, and clear client communication.</p></article>
-<article class="strength"><span class="num">03</span><h3>Writing &amp; Documentation</h3><p>Technical documents, appeal letters, player CVs, structured lessons, and process documentation.</p></article>
-<article class="strength"><span class="num">04</span><h3>Creative &amp; Social</h3><p>Graphic design, social media management, customer messaging, and video-project organization.</p></article>
-</div>
-</div>
-<section id="about">
-<div class="container about-grid">
-<aside class="about-panel reveal">
-<p class="eyebrow">About me</p>
-<h3>A practical problem-solver with a creative eye.</h3>
-<p>I combine structured operations with clear communication and thoughtful visual execution. My background allows me to support customers, investigate issues, organize data, document processes, and produce polished materials.</p>
-<div class="contact-list">
-<a href="mailto:aabaquita22@gmail.com"><span>Email</span><span>↗</span></a>
-<a href="tel:+639674330745"><span>+63 967 433 0745</span><span>↗</span></a>
-</div>
-</aside>
-<div class="capabilities">
-<article class="capability reveal"><div class="capability-icon">CS</div><div><h3>Customer support &amp; troubleshooting</h3><p>Experienced in resolving technical, billing, refund, claim, and account concerns while maintaining accurate records and positive customer experiences.</p></div></article>
-<article class="capability reveal"><div class="capability-icon">FA</div><div><h3>Fraud analysis &amp; investigation</h3><p>Reviewed transactions and account activity for fraud indicators, account takeovers, eligibility, and verification requirements.</p></div></article>
-<article class="capability reveal"><div class="capability-icon">TW</div><div><h3>Technical writing &amp; documentation</h3><p>Produced clear, concise appeal letters, client documents, player CVs, lessons, and internal tracking materials under deadlines.</p></div></article>
-<article class="capability reveal"><div class="capability-icon">DA</div><div><h3>Data organization &amp; sheet automation</h3><p>Builds and improves spreadsheets that make tracking more accurate, consistent, and efficient for daily operations.</p></div></article>
-<article class="capability reveal"><div class="capability-icon">CR</div><div><h3>Creative production support</h3><p>Creates graphic materials, manages social interactions, prepares assets, and organizes files for video-highlight editing.</p></div></article>
-</div>
-</div>
-</section>
-<section class="experience-section" id="experience">
-<div class="container">
-<div class="section-head reveal"><div><p class="eyebrow">Experience</p><h2 class="section-title">A career built on service, accuracy, and adaptability.</h2></div><p class="section-intro">Roles are presented from most recent to earliest.</p></div>
-<div class="timeline">
-<article class="role reveal"><div class="role-date">Dec 2025 — Present</div><div class="role-card"><h3>Administrator</h3><div class="company">Futxperform</div><p>Supports a football-related business through player communication, player CV preparation, video-editing file organization, profile tracking, deadline follow-ups, Discord opportunity posts, and spreadsheet automation.</p></div></article>
-<article class="role reveal"><div class="role-date">Sep 2022 — Dec 2025</div><div class="role-card"><h3>ESL Teacher</h3><div class="company">Speak Globally</div><p>Taught Korean students in one-on-one settings and helped improve communication skills through structured lessons and personalized guidance.</p></div></article>
-<article class="role reveal"><div class="role-date">Sep 2021 — Jul 2022</div><div class="role-card"><h3>Technical Writer</h3><div class="company">Appeal Assassins</div><p>Drafted and edited Amazon appeal letters that supported successful account reinstatement, producing clear client documents under strict deadlines.</p></div></article>
-<article class="role reveal"><div class="role-date">Aug 2021 — Nov 2021</div><div class="role-card"><h3>Technical Support Specialist</h3><div class="company">5CA</div><p>Provided technical assistance and troubleshooting for global users, ensuring efficient issue resolution and strong satisfaction ratings.</p></div></article>
-<article class="role reveal"><div class="role-date">Feb 2021 — Dec 2021</div><div class="role-card"><h3>Social Media Manager</h3><div class="company">Loving Not Working</div><p>Managed potential-customer FAQs for cryptocurrency classes through Instagram and Facebook Messenger, improving response accuracy and engagement.</p></div></article>
-<article class="role reveal"><div class="role-date">Jul 2018 — Feb 2021</div><div class="role-card"><h3>Fraud Analyst</h3><div class="company">Signifyd</div><p>Analyzed transactions for account takeovers, helped prevent losses, and improved review accuracy through strengthened verification processes.</p></div></article>
-<article class="role reveal"><div class="role-date">Nov 2015 — Feb 2017</div><div class="role-card"><h3>Dispute Resolution Analyst &amp; CSR</h3><div class="company">eBay</div><p>Handled technical and billing inquiries, investigated refund eligibility during calls, and maintained excellent customer satisfaction.</p></div></article>
-<article class="role reveal"><div class="role-date">Mar 2014 — Sep 2014</div><div class="role-card"><h3>Technical Support Associate &amp; CSR</h3><div class="company">Qualfon Philippines</div><p>Provided technical assistance, research, data entry, and customer support.</p></div></article>
-</div>
-</div>
-</section>
-<section id="tools">
-<div class="container">
-<div class="section-head reveal"><div><p class="eyebrow">Tools &amp; platforms</p><h2 class="section-title">Tools I use to organize, communicate, and create.</h2></div></div>
-<div class="tools-grid">
-<article class="tool-card reveal"><div class="tool-top"><h3>Google Sheets</h3><span class="tool-level">Automation</span></div><div class="meter"><span style="width:92%"></span></div><p>Tracking systems, formulas, workflow organization, profile monitoring, and process improvement.</p></article>
-<article class="tool-card reveal"><div class="tool-top"><h3>Canva</h3><span class="tool-level">Creative</span></div><div class="meter"><span style="width:91%"></span></div><p>Social graphics, layouts, portfolio presentation, player CV materials, and visual content.</p></article>
-<article class="tool-card reveal"><div class="tool-top"><h3>Adobe Photoshop</h3><span class="tool-level">Creative</span></div><div class="meter"><span style="width:82%"></span></div><p>Image editing, graphic composition, visual cleanup, and branded content preparation.</p></article>
-<article class="tool-card reveal"><div class="tool-top"><h3>Adobe Illustrator</h3><span class="tool-level">Creative</span></div><div class="meter"><span style="width:76%"></span></div><p>Vector graphics, visual assets, and scalable design elements.</p></article>
-<article class="tool-card reveal"><div class="tool-top"><h3>CRM Tools</h3><span class="tool-level">Support</span></div><div class="meter"><span style="width:88%"></span></div><p>Customer records, case documentation, issue tracking, and service follow-through.</p></article>
-<article class="tool-card reveal"><div class="tool-top"><h3>Social Platforms</h3><span class="tool-level">Communication</span></div><div class="meter"><span style="width:86%"></span></div><p>Instagram, Facebook Messenger, and Discord for customer messaging and opportunity posts.</p></article>
-</div>
-</div>
-</section>
-<section id="projects">
-<div class="container">
-<div class="section-head reveal"><div><p class="eyebrow">Featured projects</p><h2 class="section-title">Workflow automation in action.</h2><p class="section-intro">Practical Google Workspace systems designed to collect information, organize records, and make routine tracking easier.</p></div></div>
-<div class="project-stack">
-<article class="project-feature reveal">
-<div class="project-copy">
-<p class="eyebrow">Google Sheets project</p>
-<h3>Sinking Fund Automation</h3>
-<p>A Google Sheets automation created to organize sinking-fund goals, track planned contributions, and make savings progress easier to monitor.</p>
-<div class="project-tags"><span class="tag">Google Sheets</span><span class="tag">Sinking fund</span><span class="tag">Automation</span><span class="tag">Budget tracking</span><span class="tag">Financial planning</span></div>
-<div class="project-actions"><a class="button primary" href="https://docs.google.com/spreadsheets/d/1hNVcJ39BcrtARwJ6GZvx6fVL2NWwE2NE44VNQ_OMOl8/edit?gid=1539822423#gid=1539822423" rel="noopener" target="_blank">Open sinking fund sheet <span aria-hidden="true">↗</span></a></div>
-</div>
-<div aria-hidden="true" class="sheet-visual">
-<div class="sheet-window"><div class="sheet-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="sheet-grid">
-<div class="cell header"></div><div class="cell header"></div><div class="cell header"></div><div class="cell header"></div><div class="cell header"></div>
-<div class="cell"></div><div class="cell"></div><div class="cell status"></div><div class="cell highlight"></div><div class="cell"></div>
-<div class="cell"></div><div class="cell highlight"></div><div class="cell"></div><div class="cell status"></div><div class="cell"></div>
-<div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell status"></div>
-<div class="cell highlight"></div><div class="cell"></div><div class="cell status"></div><div class="cell"></div><div class="cell"></div>
-<div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell highlight"></div><div class="cell status"></div>
-<div class="cell"></div><div class="cell status"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-</div></div>
-</div>
-</article>
-<article class="project-feature attendance-project reveal">
-<div class="project-copy">
-<p class="eyebrow">Google Forms + Sheets project</p>
-<h3>Attendance Form Automation</h3>
-<p>An attendance workflow that captures a selected name and clock-in or clock-out action through Google Forms, then records each response in a connected Google Sheet for organized attendance tracking.</p>
-<div class="project-tags"><span class="tag">Google Forms</span><span class="tag">Google Sheets</span><span class="tag">Attendance tracking</span><span class="tag">Clock in / out</span><span class="tag">Automated records</span></div>
-<div class="project-actions">
-<a class="button primary" href="https://docs.google.com/forms/d/13qM5K99gk00iJdPYP116G00vWrhwO7mjK5Yi-UrtMwU/viewform" rel="noopener" target="_blank">Open attendance form <span aria-hidden="true">↗</span></a>
-<a class="button secondary" href="https://docs.google.com/spreadsheets/d/1wRYc5T1RzXDF9bp15wUeOjLNSS5HcGFxfSrjvPp9EkQ/edit?gid=262393505#gid=262393505" rel="noopener" target="_blank">View automated sheet <span aria-hidden="true">↗</span></a>
-</div>
-</div>
-<div aria-hidden="true" class="form-visual">
-<div class="form-flow">
-<div class="form-window">
-<div class="form-accent"></div>
-<div class="form-body">
-<h4 class="form-title">Attendance Form</h4>
-<p class="form-helper">Submit a clock-in or clock-out response.</p>
-<div class="form-question"><span class="form-label">Select your name *</span><div class="fake-select"><span>Choose a name</span><span>⌄</span></div></div>
-<div class="form-question"><span class="form-label">Attendance action *</span><div class="radio-row"><div class="radio-pill"><span class="radio-dot"></span><span>Clock In</span></div><div class="radio-pill"><span class="radio-dot"></span><span>Clock Out</span></div></div></div>
-<span class="fake-submit">Submit</span>
-</div>
-</div>
-<div class="flow-arrow">→</div>
-<div class="response-sheet">
-<div class="response-bar">AUTOMATED ATTENDANCE LOG</div>
-<div class="response-grid">
-<div class="response-cell head"></div><div class="response-cell head"></div><div class="response-cell head"></div>
-<div class="response-cell"></div><div class="response-cell mark"></div><div class="response-cell"></div>
-<div class="response-cell"></div><div class="response-cell"></div><div class="response-cell mark"></div>
-<div class="response-cell"></div><div class="response-cell mark"></div><div class="response-cell"></div>
-<div class="response-cell"></div><div class="response-cell"></div><div class="response-cell mark"></div>
-<div class="response-cell"></div><div class="response-cell mark"></div><div class="response-cell"></div>
-</div>
-</div>
-</div>
-</div>
-</article>
-</div>
-</div>
-</section>
-<section id="creative-work">
-<div class="container">
-<div class="section-head reveal"><div><p class="eyebrow">Graphic edits</p><h2 class="section-title">Selected design work.</h2><p class="section-intro">A selection of social-media graphics, real-estate flyers, food promotions, event designs, party printables, sports composites, and esports artwork. Select any image to view it at full size.</p></div></div>
-<div class="gallery"><article class="work-card reveal">
-<a aria-label="View Delicious American Food Ad at full size" class="work-media-link" href="delicious-american-food-ad.webp" rel="noopener" target="_blank">
-<div class="work-media poster"><img alt="Delicious American Food Ad" decoding="async" loading="lazy" src="delicious-american-food-ad.webp"/></div>
-</a>
-<div class="work-info"><span class="type">Food advertisement</span><h3>Delicious American Food Ad</h3><p>A bold burger promotion using warm brand colors, strong offer messaging, and a clear delivery call to action.</p><span class="view-note">View full image ↗</span></div>
-</article><article class="work-card reveal">
-<a aria-label="View Luxury Home for Sale at full size" class="work-media-link" href="luxury-home-for-sale.webp" rel="noopener" target="_blank">
-<div class="work-media template"><img alt="Luxury Home for Sale" decoding="async" loading="lazy" src="luxury-home-for-sale.webp"/></div>
-</a>
-<div class="work-info"><span class="type">Real-estate flyer</span><h3>Luxury Home for Sale</h3><p>A property listing layout combining a hero exterior image, circular interior details, and an easy-to-scan amenities panel.</p><span class="view-note">View full image ↗</span></div>
-</article><article class="work-card reveal">
-<a aria-label="View Find Your Perfect Home at full size" class="work-media-link" href="perfect-home-listing.webp" rel="noopener" target="_blank">
-<div class="work-media template"><img alt="Find Your Perfect Home" decoding="async" loading="lazy" src="perfect-home-listing.webp"/></div>
-</a>
-<div class="work-info"><span class="type">Real-estate flyer</span><h3>Find Your Perfect Home</h3><p>A modern home-listing design with a spacious interior image, strong typography, and key property features organized below.</p><span class="view-note">View full image ↗</span></div>
-</article><article class="work-card reveal">
-<a aria-label="View Modern Living Property Flyer at full size" class="work-media-link" href="modern-living-home-listing.webp" rel="noopener" target="_blank">
-<div class="work-media template"><img alt="Modern Living Property Flyer" decoding="async" loading="lazy" src="modern-living-home-listing.webp"/></div>
-</a>
-<div class="work-info"><span class="type">Real-estate flyer</span><h3>Modern Living Property Flyer</h3><p>A navy-and-gold listing concept using geometric image frames, investment messaging, and a prominent contact section.</p><span class="view-note">View full image ↗</span></div>
-</article><article class="work-card reveal">
-<a aria-label="View Senior Graphic Artist Hiring Post at full size" class="work-media-link" href="senior-graphic-artist-hiring-post.webp" rel="noopener" target="_blank">
-<div class="work-media poster"><img alt="Senior Graphic Artist Hiring Post" decoding="async" loading="lazy" src="senior-graphic-artist-hiring-post.webp"/></div>
-</a>
-<div class="work-info"><span class="type">Recruitment graphic</span><h3>Senior Graphic Artist Hiring Post</h3><p>A professional recruitment post with bold yellow geometry, a clean portrait layout, and a direct application call to action.</p><span class="view-note">View full image ↗</span></div>
-</article><article class="work-card reveal">
-<a aria-label="View Foodie Restaurant Menu at full size" class="work-media-link" href="foodie-restaurant-menu.webp" rel="noopener" target="_blank">
-<div class="work-media template"><img alt="Foodie Restaurant Menu" decoding="async" loading="lazy" src="foodie-restaurant-menu.webp"/></div>
-</a>
-<div class="work-info"><span class="type">Restaurant menu</span><h3>Foodie Restaurant Menu</h3><p>A bright orange menu design with layered food photography, repeated product panels, and clear price placement.</p><span class="view-note">View full image ↗</span></div>
-</article><article class="work-card reveal">
-<a aria-label="View Kierstin Bellamiere Turns One at full size" class="work-media-link" href="kierstin-bellamiere-first-birthday.webp" rel="noopener" target="_blank">
-<div class="work-media poster"><img alt="Kierstin Bellamiere Turns One" decoding="async" loading="lazy" src="kierstin-bellamiere-first-birthday.webp"/></div>
-</a>
-<div class="work-info"><span class="type">Birthday design</span><h3>Kierstin Bellamiere Turns One</h3><p>A pastel mermaid-themed first-birthday banner with customized lettering, underwater illustrations, and a framed portrait.</p><span class="view-note">View full image ↗</span></div>
-</article><article class="work-card reveal">
-<a aria-label="View Matt Kendrick Kindergarten Design at full size" class="work-media-link" href="matt-kendrick-kindergarten-design.webp" rel="noopener" target="_blank">
-<div class="work-media poster"><img alt="Matt Kendrick Kindergarten Design" decoding="async" loading="lazy" src="matt-kendrick-kindergarten-design.webp"/></div>
-</a>
-<div class="work-info"><span class="type">Children’s graphic</span><h3>Matt Kendrick Kindergarten Design</h3><p>A cheerful children’s name graphic using glossy balloon letters, playful clouds, and a bright rainbow palette.</p><span class="view-note">View full image ↗</span></div>
-</article><article class="work-card reveal"><a aria-label="View Hot Wheels Party Hat at full size" class="work-media-link" href="hot-wheels-party-hat.webp" rel="noopener" target="_blank"><div class="work-media template"><img alt="Hot Wheels Party Hat" decoding="async" loading="lazy" src="hot-wheels-party-hat.webp"/></div></a><div class="work-info"><span class="type">Party printable</span><h3>Hot Wheels Party Hat</h3><p>Racing-themed party hat template with energetic typography, layered speed graphics, and a print-ready cut layout.</p><span class="view-note">View full image ↗</span></div></article><article class="work-card reveal"><a aria-label="View Hot Wheels Gable Box at full size" class="work-media-link" href="hot-wheels-gable-box.webp" rel="noopener" target="_blank"><div class="work-media template"><img alt="Hot Wheels Gable Box" decoding="async" loading="lazy" src="hot-wheels-gable-box.webp"/></div></a><div class="work-info"><span class="type">Party packaging</span><h3>Hot Wheels Gable Box</h3><p>Coordinated racing-themed gable box artwork featuring bold colors, cars, flags, and a customized celebrant name.</p><span class="view-note">View full image ↗</span></div></article><article class="work-card reveal"><a aria-label="View Mermaid Gable Box at full size" class="work-media-link" href="mermaid-gable-box.webp" rel="noopener" target="_blank"><div class="work-media template"><img alt="Mermaid Gable Box" decoding="async" loading="lazy" src="mermaid-gable-box.webp"/></div></a><div class="work-info"><span class="type">Party packaging</span><h3>Mermaid Gable Box</h3><p>Pastel underwater birthday packaging with customized typography, watercolor textures, and coordinated mermaid illustrations.</p><span class="view-note">View full image ↗</span></div></article><article class="work-card reveal"><a aria-label="View Ballerina Gable Box at full size" class="work-media-link" href="ballerina-gable-box.webp" rel="noopener" target="_blank"><div class="work-media template"><img alt="Ballerina Gable Box" decoding="async" loading="lazy" src="ballerina-gable-box.webp"/></div></a><div class="work-info"><span class="type">Party packaging</span><h3>Ballerina Gable Box</h3><p>Soft watercolor birthday box design with ballerina artwork, floral accents, and personalized event messaging.</p><span class="view-note">View full image ↗</span></div></article><article class="work-card reveal"><a aria-label="View Ballerina Party Hat at full size" class="work-media-link" href="ballerina-party-hat.webp" rel="noopener" target="_blank"><div class="work-media template"><img alt="Ballerina Party Hat" decoding="async" loading="lazy" src="ballerina-party-hat.webp"/></div></a><div class="work-info"><span class="type">Party printable</span><h3>Ballerina Party Hat</h3><p>Matching ballerina party hat layout with personalized typography, floral details, and a print-ready dieline.</p><span class="view-note">View full image ↗</span></div></article><article class="work-card reveal"><a aria-label="View Mermaid Party Hat at full size" class="work-media-link" href="mermaid-party-hat.webp" rel="noopener" target="_blank"><div class="work-media template"><img alt="Mermaid Party Hat" decoding="async" loading="lazy" src="mermaid-party-hat.webp"/></div></a><div class="work-info"><span class="type">Party printable</span><h3>Mermaid Party Hat</h3><p>Coordinated mermaid party hat with underwater scenery, custom birthday lettering, and a cut-ready format.</p><span class="view-note">View full image ↗</span></div></article><article class="work-card reveal"><a aria-label="View Football Sports Poster at full size" class="work-media-link" href="messi-sports-poster.webp" rel="noopener" target="_blank"><div class="work-media poster"><img alt="Football Sports Poster" decoding="async" loading="lazy" src="messi-sports-poster.webp"/></div></a><div class="work-info"><span class="type">Photo composite</span><h3>Football Sports Poster</h3><p>A dramatic football poster combining layered portraits, stadium scenery, atmospheric effects, and strong visual hierarchy.</p><span class="view-note">View full image ↗</span></div></article><article class="work-card reveal"><a aria-label="View Photoshop Editing Process at full size" class="work-media-link" href="messi-photoshop-process.webp" rel="noopener" target="_blank"><div class="work-media process"><img alt="Photoshop Editing Process" decoding="async" loading="lazy" src="messi-photoshop-process.webp"/></div></a><div class="work-info"><span class="type">Behind the scenes</span><h3>Photoshop Editing Process</h3><p>A workspace capture showing the layered photo-compositing process, masks, effects, and adjustments used in the sports poster.</p><span class="view-note">View full image ↗</span></div></article><article class="work-card reveal"><a aria-label="View Gaming Profile Poster at full size" class="work-media-link" href="tenz-gaming-poster.webp" rel="noopener" target="_blank"><div class="work-media poster"><img alt="Gaming Profile Poster" decoding="async" loading="lazy" src="tenz-gaming-poster.webp"/></div></a><div class="work-info"><span class="type">Esports graphic</span><h3>Gaming Profile Poster</h3><p>A cool-toned player feature graphic combining character artwork, portrait framing, typography, and geometric overlays.</p><span class="view-note">View full image ↗</span></div></article><article class="work-card reveal"><a aria-label="View Esports Player Poster at full size" class="work-media-link" href="dendi-gaming-poster.webp" rel="noopener" target="_blank"><div class="work-media poster"><img alt="Esports Player Poster" decoding="async" loading="lazy" src="dendi-gaming-poster.webp"/></div></a><div class="work-info"><span class="type">Esports graphic</span><h3>Esports Player Poster</h3><p>A high-contrast yellow-and-black composition using a cutout portrait, branded elements, and bold directional typography.</p><span class="view-note">View full image ↗</span></div></article><article class="work-card reveal"><a aria-label="View Football Player Poster at full size" class="work-media-link" href="cole-palmer-football-poster.webp" rel="noopener" target="_blank"><div class="work-media poster"><img alt="Football Player Poster" decoding="async" loading="lazy" src="cole-palmer-football-poster.webp"/></div></a><div class="work-info"><span class="type">Sports graphic</span><h3>Football Player Poster</h3><p>A blue football feature poster with multiple action images, layered depth, prominent player typography, and club branding.</p><span class="view-note">View full image ↗</span></div></article></div>
-</div>
-</section>
-<section class="videos" id="video-work">
-<div class="container">
-<div class="section-head reveal"><div><p class="eyebrow">Video samples</p><h2 class="section-title">Editing and video projects.</h2><p class="section-intro">Football edits and screen-recorded design workflows. Use the built-in controls to play each sample directly in the portfolio.</p></div></div>
-<div class="video-grid"><article class="video-card reveal featured-video">
-<div class="video-media actual-video"><video controls="" playsinline="" poster="son-heung-min-football-edit-poster.webp" preload="metadata"><source src="son-heung-min-football-edit.mp4" type="video/mp4"/>Your browser does not support the video element.</video></div>
-<div class="video-info"><h3>Son Heung-min Football Edit</h3><p>A highlight compilation featuring match footage, graphic labels, pacing, and transitions assembled for a sports portfolio sample.</p></div>
-</article><article class="video-card reveal featured-video">
-<div class="video-media actual-video"><video controls="" playsinline="" poster="messi-edit-poster.webp" preload="metadata"><source src="messi-edit.mp4" type="video/mp4"/>Your browser does not support the video element.</video></div>
-<div class="video-info"><h3>Messi Football Video Edit</h3><p>A short-form sports edit combining football imagery, motion, pacing, and visual effects for a social-media-ready result.</p></div>
-</article><article class="video-card reveal featured-video">
-<div class="video-media actual-video"><video controls="" playsinline="" poster="real-estate-flyer-design-process-poster.webp" preload="metadata"><source src="real-estate-flyer-design-process.mp4" type="video/mp4"/>Your browser does not support the video element.</video></div>
-<div class="video-info"><h3>Real-Estate Flyer Design Process</h3><p>A screen recording showing the construction of a property flyer from its base layout through image placement and final details.</p></div>
-</article><article class="video-card reveal featured-video">
-<div class="video-media actual-video"><video controls="" playsinline="" poster="food-menu-design-process-poster.webp" preload="metadata"><source src="food-menu-design-process.mp4" type="video/mp4"/>Your browser does not support the video element.</video></div>
-<div class="video-info"><h3>Food Menu Design Process</h3><p>A screen-recorded workflow showing the creation of a restaurant promotion with typography, food photography, and pricing details.</p></div>
-</article><article class="video-card reveal featured-video">
-<div class="video-media actual-video"><video controls="" playsinline="" poster="instagram-food-post-design-process-poster.webp" preload="metadata"><source src="instagram-food-post-design-process.mp4" type="video/mp4"/>Your browser does not support the video element.</video></div>
-<div class="video-info"><h3>Instagram Food Post Design Process</h3><p>A design walkthrough for a social-media food post using an Instagram-style frame, gradient background, and product imagery.</p></div>
-</article><article class="video-card reveal featured-video">
-<div class="video-media actual-video"><video controls="" playsinline="" poster="senior-graphic-artist-design-process-poster.webp" preload="metadata"><source src="senior-graphic-artist-design-process.mp4" type="video/mp4"/>Your browser does not support the video element.</video></div>
-<div class="video-info"><h3>Hiring Post Design Process</h3><p>A screen recording that follows the assembly of a professional recruitment graphic from shapes and typography to the final layout.</p></div>
-</article></div>
-</div>
-</section>
-<section id="contact">
-<div class="container">
-<div class="contact-wrap reveal">
-<p class="eyebrow">Let’s work together</p>
-<h2>Need organized support with a creative, detail-focused approach?</h2>
-<p>I’m interested in opportunities involving administration, customer support, technical writing, operations, spreadsheet automation, social media, and creative production.</p>
-<div class="contact-actions"><a class="button primary" href="mailto:aabaquita22@gmail.com">aabaquita22@gmail.com</a><a class="button secondary" href="tel:+639674330745">+63 967 433 0745</a><a class="button secondary" href="Aydelore_Abaquita_Resume.pdf" rel="noopener" target="_blank">View résumé</a></div>
-</div>
-</div>
-</section>
-</main>
-<footer><div class="container footer-row"><span>© <span id="year"></span> Aydelore Abaquita. Portfolio website.</span><div class="footer-links"><a href="#top">Back to top</a></div></div></footer>
-<script>
-    const menuButton=document.querySelector('.menu-button');
-    const navLinks=document.querySelector('.nav-links');
-    menuButton.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuButton.setAttribute('aria-expanded',open);});
-    document.querySelectorAll('.nav-links a').forEach(link=>link.addEventListener('click',()=>{navLinks.classList.remove('open');menuButton.setAttribute('aria-expanded','false');}));
-    document.getElementById('year').textContent=new Date().getFullYear();
-    const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target);}}),{threshold:.08});
-    document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
-  </script>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="Aydelore Abaquita home">
+        <span class="brand-mark">AA</span>
+        <span class="brand-copy">
+          <strong>Aydelore Abaquita</strong>
+          <small>Portfolio · 2026</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+        <span></span><span></span>
+        <span class="sr-only">Open navigation</span>
+      </button>
+
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="header-cta" href="mailto:aabaquita22@gmail.com">Let’s talk <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero section-shell" aria-labelledby="hero-title">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="status-dot"></span> Open to remote opportunities</p>
+        <h1 id="hero-title">Organized work.<br /><span>Creative results.</span></h1>
+        <p class="hero-lede">
+          I support people, solve problems, investigate details, organize operations, and turn ideas into polished digital and visual work.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#experience">Explore my experience</a>
+          <a class="button button-secondary" href="#work">View selected work</a>
+        </div>
+      </div>
+
+      <aside class="hero-card reveal" aria-label="Professional summary">
+        <div class="portrait-frame">
+          <img src="assets/images/profile-placeholder.svg" alt="Portrait placeholder for Aydelore Abaquita" />
+          <span class="image-note">Replace with your portrait</span>
+        </div>
+        <div class="hero-card-meta">
+          <p>Based in the Philippines</p>
+          <p>Available worldwide</p>
+        </div>
+      </aside>
+
+      <div class="hero-stats reveal" aria-label="Career highlights">
+        <article>
+          <strong>10+</strong>
+          <span>Years across customer-facing and operational roles</span>
+        </article>
+        <article>
+          <strong>8</strong>
+          <span>Professional roles across support, analysis, writing, and admin</span>
+        </article>
+        <article>
+          <strong>3</strong>
+          <span>Growing creative and technical disciplines</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="about section-shell" id="about" aria-labelledby="about-title">
+      <div class="section-heading reveal">
+        <p class="section-number">01 / About</p>
+        <h2 id="about-title">A multidisciplinary professional with a practical, people-first approach.</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-copy reveal">
+          <p class="large-copy">
+            My career has grown through service, accuracy, research, communication, and adaptability.
+          </p>
+          <p>
+            I have worked in customer service, technical support, dispute resolution, fraud analysis, social media engagement, technical writing, education, and business administration. Across every role, I have learned how to listen carefully, document clearly, investigate thoroughly, and keep work moving.
+          </p>
+          <p>
+            Outside my primary work, I create graphics for a local printing business and continue building skills in Adobe Illustrator, automation, web development, Premiere Pro, and After Effects.
+          </p>
+        </div>
+
+        <div class="discipline-list reveal">
+          <article>
+            <span>01</span>
+            <div><h3>Operations & Administration</h3><p>Tracking, coordination, documentation, outreach, follow-ups, and workflow improvement.</p></div>
+          </article>
+          <article>
+            <span>02</span>
+            <div><h3>Customer & Technical Support</h3><p>Clear communication, troubleshooting, case ownership, billing support, and resolution.</p></div>
+          </article>
+          <article>
+            <span>03</span>
+            <div><h3>Research & Risk Analysis</h3><p>Transaction review, evidence gathering, pattern recognition, and careful decision support.</p></div>
+          </article>
+          <article>
+            <span>04</span>
+            <div><h3>Writing & Creative Production</h3><p>Appeals, CVs, structured lessons, social content, print graphics, and visual assets.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience section-shell" id="experience" aria-labelledby="experience-title">
+      <div class="section-heading reveal">
+        <p class="section-number">02 / Experience</p>
+        <h2 id="experience-title">A detailed career archive.</h2>
+        <p>Select a role to explore the responsibilities, focus areas, and video space for that chapter of my career.</p>
+      </div>
+
+      <div class="experience-layout reveal">
+        <div class="role-tabs" role="tablist" aria-label="Professional experience">
+          <button class="role-tab active" id="tab-futxperform" role="tab" aria-selected="true" aria-controls="panel-futxperform" data-role="futxperform">
+            <span class="tab-date">2026 — Present</span>
+            <span class="tab-title">Administrator</span>
+            <span class="tab-company">Futxperform</span>
+          </button>
+          <button class="role-tab" id="tab-speak-globally" role="tab" aria-selected="false" aria-controls="panel-speak-globally" data-role="speak-globally">
+            <span class="tab-date">2022 — 2026</span>
+            <span class="tab-title">ESL Teacher</span>
+            <span class="tab-company">Speak Globally</span>
+          </button>
+          <button class="role-tab" id="tab-appeals-assassins" role="tab" aria-selected="false" aria-controls="panel-appeals-assassins" data-role="appeals-assassins">
+            <span class="tab-date">2021 — 2022</span>
+            <span class="tab-title">Technical Writer</span>
+            <span class="tab-company">Appeals Assassins</span>
+          </button>
+          <button class="role-tab" id="tab-5ca" role="tab" aria-selected="false" aria-controls="panel-5ca" data-role="5ca">
+            <span class="tab-date">2021</span>
+            <span class="tab-title">Technical Support</span>
+            <span class="tab-company">5CA</span>
+          </button>
+          <button class="role-tab" id="tab-loving-not-working" role="tab" aria-selected="false" aria-controls="panel-loving-not-working" data-role="loving-not-working">
+            <span class="tab-date">2021</span>
+            <span class="tab-title">Client Support & Social</span>
+            <span class="tab-company">Loving Not Working</span>
+          </button>
+          <button class="role-tab" id="tab-signifyd" role="tab" aria-selected="false" aria-controls="panel-signifyd" data-role="signifyd">
+            <span class="tab-date">2018 — 2021</span>
+            <span class="tab-title">Fraud Analyst</span>
+            <span class="tab-company">Signifyd</span>
+          </button>
+          <button class="role-tab" id="tab-ebay" role="tab" aria-selected="false" aria-controls="panel-ebay" data-role="ebay">
+            <span class="tab-date">2015 — 2017</span>
+            <span class="tab-title">Dispute Resolution</span>
+            <span class="tab-company">eBay</span>
+          </button>
+          <button class="role-tab" id="tab-qualfon" role="tab" aria-selected="false" aria-controls="panel-qualfon" data-role="qualfon">
+            <span class="tab-date">2014</span>
+            <span class="tab-title">Technical Support & CSR</span>
+            <span class="tab-company">Qualfon Philippines</span>
+          </button>
+        </div>
+
+        <div class="role-panels">
+          <article class="role-panel active" id="panel-futxperform" role="tabpanel" aria-labelledby="tab-futxperform" tabindex="0">
+            <div class="role-header">
+              <div>
+                <p class="role-period">February 2026 — Present</p>
+                <h3>Administrator</h3>
+                <p class="role-company">Futxperform · Direct support to the Founder & CEO</p>
+              </div>
+              <span class="role-index">08</span>
+            </div>
+            <p class="role-summary">Supporting a player-development business through administration, communication, profile creation, partner outreach, and spreadsheet-based workflow improvements.</p>
+            <div class="role-content-grid">
+              <div>
+                <h4>Key responsibilities</h4>
+                <ul class="detail-list">
+                  <li>Assist the Founder and CEO with day-to-day administrative and operational tasks.</li>
+                  <li>Manage player information, records, progress details, and program-related updates.</li>
+                  <li>Create professional player CVs using the information and materials collected from each participant.</li>
+                  <li>Prepare and forward player profiles to relevant partners for potential opportunities.</li>
+                  <li>Research and reach out to prospective partners through LinkedIn.</li>
+                  <li>Maintain organized communication and follow-ups with players, clients, and external contacts.</li>
+                  <li>Build and improve Google Sheets systems for cleaner player data, tracking, and repetitive-task automation.</li>
+                </ul>
+              </div>
+              <div class="role-aside">
+                <div class="focus-card">
+                  <span>Focus areas</span>
+                  <p>Administration · Player coordination · CV creation · LinkedIn outreach · Google Sheets automation</p>
+                </div>
+                <div class="role-video" data-video="assets/videos/futxperform-role.mp4">
+                  <div class="play-mark">▶</div>
+                  <div><strong>Role story video</strong><span>Add your Futxperform voice-over video here</span></div>
+                  <button type="button" class="video-demo-button">Preview video space</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="role-panel" id="panel-speak-globally" role="tabpanel" aria-labelledby="tab-speak-globally" tabindex="0" hidden>
+            <div class="role-header">
+              <div>
+                <p class="role-period">September 2022 — January 2026</p>
+                <h3>ESL Teacher</h3>
+                <p class="role-company">Speak Globally</p>
+              </div>
+              <span class="role-index">07</span>
+            </div>
+            <p class="role-summary">Delivered one-on-one English lessons to Korean students with an emphasis on communication, confidence, structure, and personalized guidance.</p>
+            <div class="role-content-grid">
+              <div>
+                <h4>Key responsibilities</h4>
+                <ul class="detail-list">
+                  <li>Conducted individual English lessons for Korean students with different ages and proficiency levels.</li>
+                  <li>Followed structured lesson materials while adapting explanations to each learner’s pace and needs.</li>
+                  <li>Helped students improve pronunciation, grammar, vocabulary, listening, and conversational confidence.</li>
+                  <li>Encouraged students to express ideas clearly through guided questions and practical discussions.</li>
+                  <li>Provided patient corrections, examples, and feedback during each session.</li>
+                  <li>Maintained a positive and comfortable learning environment for consistent participation.</li>
+                  <li>Managed class schedules and lesson preparation for multiple students.</li>
+                </ul>
+              </div>
+              <div class="role-aside">
+                <div class="focus-card"><span>Focus areas</span><p>One-on-one teaching · Communication · Lesson delivery · Feedback · Student engagement</p></div>
+                <div class="role-video" data-video="assets/videos/speak-globally-role.mp4">
+                  <div class="play-mark">▶</div><div><strong>Role story video</strong><span>Add your teaching experience voice-over</span></div><button type="button" class="video-demo-button">Preview video space</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="role-panel" id="panel-appeals-assassins" role="tabpanel" aria-labelledby="tab-appeals-assassins" tabindex="0" hidden>
+            <div class="role-header">
+              <div>
+                <p class="role-period">September 2021 — July 2022</p>
+                <h3>Technical Writer</h3>
+                <p class="role-company">Appeals Assassins</p>
+              </div>
+              <span class="role-index">06</span>
+            </div>
+            <p class="role-summary">Worked directly with Amazon sellers to understand account suspensions, research the issue, and prepare clear appeal documents for reinstatement requests.</p>
+            <div class="role-content-grid">
+              <div>
+                <h4>Key responsibilities</h4>
+                <ul class="detail-list">
+                  <li>Handled one-on-one client conversations about suspended Amazon seller accounts.</li>
+                  <li>Interviewed clients to understand what happened before the suspension and identify missing details.</li>
+                  <li>Reviewed suspension notices, account history, and supporting client information.</li>
+                  <li>Researched relevant Amazon policies and possible root causes connected to the suspension.</li>
+                  <li>Drafted appeal letters with a clear explanation, corrective actions, and prevention plan.</li>
+                  <li>Organized complex information into professional, concise, and easy-to-review documents.</li>
+                  <li>Revised appeals based on client feedback and additional information.</li>
+                  <li>Managed sensitive cases with discretion, accuracy, and careful documentation.</li>
+                </ul>
+              </div>
+              <div class="role-aside">
+                <div class="focus-card"><span>Focus areas</span><p>Client interviews · Policy research · Root-cause analysis · Appeal writing · Document revision</p></div>
+                <div class="role-video" data-video="assets/videos/appeals-assassins-role.mp4">
+                  <div class="play-mark">▶</div><div><strong>Role story video</strong><span>Add your technical writing voice-over</span></div><button type="button" class="video-demo-button">Preview video space</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="role-panel" id="panel-5ca" role="tabpanel" aria-labelledby="tab-5ca" tabindex="0" hidden>
+            <div class="role-header">
+              <div>
+                <p class="role-period">August 2021 — November 2021</p>
+                <h3>Technical Support Specialist</h3>
+                <p class="role-company">5CA · Seasonal gaming account</p>
+              </div>
+              <span class="role-index">05</span>
+            </div>
+            <p class="role-summary">Provided player support for account and in-game issues, documented reproducible problems, and escalated technical concerns through bug reports.</p>
+            <div class="role-content-grid">
+              <div>
+                <h4>Key responsibilities</h4>
+                <ul class="detail-list">
+                  <li>Assisted players whose game cards or purchased content were not loading correctly.</li>
+                  <li>Investigated missing characters, missing content, and game-account access concerns.</li>
+                  <li>Guided players through account checks and standard troubleshooting steps.</li>
+                  <li>Collected relevant details such as device information, account data, error behavior, and steps already attempted.</li>
+                  <li>Created organized bug reports for issues requiring technical investigation.</li>
+                  <li>Documented customer interactions and resolution steps clearly.</li>
+                  <li>Set accurate expectations when issues needed escalation or further review.</li>
+                </ul>
+              </div>
+              <div class="role-aside">
+                <div class="focus-card"><span>Focus areas</span><p>Gaming support · Account troubleshooting · Bug reporting · Documentation · Escalation</p></div>
+                <div class="role-video" data-video="assets/videos/5ca-role.mp4">
+                  <div class="play-mark">▶</div><div><strong>Role story video</strong><span>Add your gaming support voice-over</span></div><button type="button" class="video-demo-button">Preview video space</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="role-panel" id="panel-loving-not-working" role="tabpanel" aria-labelledby="tab-loving-not-working" tabindex="0" hidden>
+            <div class="role-header">
+              <div>
+                <p class="role-period">February 2021 — December 2021</p>
+                <h3>Client Support & Social Media Engagement</h3>
+                <p class="role-company">Loving Not Working · Direct client</p>
+              </div>
+              <span class="role-index">04</span>
+            </div>
+            <p class="role-summary">Supported a direct client by answering prospective-student questions, encouraging class enrollment, and engaging with audiences through social media.</p>
+            <div class="role-content-grid">
+              <div>
+                <h4>Key responsibilities</h4>
+                <ul class="detail-list">
+                  <li>Responded to frequently asked questions from potential customers interested in cryptocurrency classes.</li>
+                  <li>Explained basic class information and guided interested people toward enrollment.</li>
+                  <li>Reached out to prospective students through direct messages and social channels.</li>
+                  <li>Managed audience interactions by commenting and responding to social media activity.</li>
+                  <li>Helped maintain an approachable and responsive online presence for the client.</li>
+                  <li>Tracked conversations and followed up with interested prospects when appropriate.</li>
+                  <li>Adjusted messaging based on the customer’s questions and level of interest.</li>
+                </ul>
+              </div>
+              <div class="role-aside">
+                <div class="focus-card"><span>Focus areas</span><p>Prospect support · Social engagement · Enrollment assistance · Direct messaging · Follow-up</p></div>
+                <div class="role-video" data-video="assets/videos/loving-not-working-role.mp4">
+                  <div class="play-mark">▶</div><div><strong>Role story video</strong><span>Add your direct-client voice-over</span></div><button type="button" class="video-demo-button">Preview video space</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="role-panel" id="panel-signifyd" role="tabpanel" aria-labelledby="tab-signifyd" tabindex="0" hidden>
+            <div class="role-header">
+              <div>
+                <p class="role-period">July 2018 — February 2021</p>
+                <h3>Fraud Analyst</h3>
+                <p class="role-company">Signifyd</p>
+              </div>
+              <span class="role-index">03</span>
+            </div>
+            <p class="role-summary">Reviewed online transactions to determine whether an order was likely placed by the legitimate cardholder and researched supporting links when information differed from normal activity.</p>
+            <div class="role-content-grid">
+              <div>
+                <h4>Key responsibilities</h4>
+                <ul class="detail-list">
+                  <li>Analyzed e-commerce transactions for signs of unauthorized card use or account takeover.</li>
+                  <li>Compared order details with the cardholder’s known or usual purchasing information.</li>
+                  <li>Reviewed differences involving names, addresses, contact information, devices, and order behavior.</li>
+                  <li>Researched possible relationships between the cardholder and the information used in the order.</li>
+                  <li>Used publicly available online sources to look for evidence that supported or challenged a connection.</li>
+                  <li>Evaluated available details carefully before making or supporting a fraud decision.</li>
+                  <li>Documented evidence and reasoning in a clear, organized manner.</li>
+                  <li>Handled sensitive customer and payment information with discretion.</li>
+                </ul>
+              </div>
+              <div class="role-aside">
+                <div class="focus-card"><span>Focus areas</span><p>Transaction review · Fraud indicators · Open-source research · Evidence linking · Risk decisions</p></div>
+                <div class="role-video" data-video="assets/videos/signifyd-role.mp4">
+                  <div class="play-mark">▶</div><div><strong>Role story video</strong><span>Add your fraud analysis voice-over</span></div><button type="button" class="video-demo-button">Preview video space</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="role-panel" id="panel-ebay" role="tabpanel" aria-labelledby="tab-ebay" tabindex="0" hidden>
+            <div class="role-header">
+              <div>
+                <p class="role-period">November 2015 — February 2017</p>
+                <h3>Dispute Resolution Analyst & Customer Service Representative</h3>
+                <p class="role-company">eBay</p>
+              </div>
+              <span class="role-index">02</span>
+            </div>
+            <p class="role-summary">Progressed from general customer support into escalations, where I investigated open cases involving items not received and helped determine the appropriate release of funds.</p>
+            <div class="role-content-grid">
+              <div>
+                <h4>Key responsibilities</h4>
+                <ul class="detail-list">
+                  <li>Answered common customer questions during the first stage of the role.</li>
+                  <li>Identified the correct department and transferred calls when specialized support was needed.</li>
+                  <li>Moved into the Escalations Department after gaining experience in frontline support.</li>
+                  <li>Handled calls connected to active buyer-and-seller disputes.</li>
+                  <li>Investigated cases involving items reported as not received.</li>
+                  <li>Reviewed case notes, transaction details, shipment information, and statements from both parties.</li>
+                  <li>Determined whether funds should be released to the buyer or the seller based on the available evidence and process.</li>
+                  <li>Processed fund releases and explained decisions clearly to customers.</li>
+                  <li>Maintained professionalism during difficult or emotionally charged conversations.</li>
+                </ul>
+              </div>
+              <div class="role-aside">
+                <div class="focus-card"><span>Focus areas</span><p>Customer service · Escalations · Case investigation · Buyer-seller disputes · Funds processing</p></div>
+                <div class="role-video" data-video="assets/videos/ebay-role.mp4">
+                  <div class="play-mark">▶</div><div><strong>Role story video</strong><span>Add your eBay experience voice-over</span></div><button type="button" class="video-demo-button">Preview video space</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="role-panel" id="panel-qualfon" role="tabpanel" aria-labelledby="tab-qualfon" tabindex="0" hidden>
+            <div class="role-header">
+              <div>
+                <p class="role-period">March 2014 — September 2014</p>
+                <h3>Technical Support Associate & Customer Service Representative</h3>
+                <p class="role-company">Qualfon Philippines · TracFone account</p>
+              </div>
+              <span class="role-index">01</span>
+            </div>
+            <p class="role-summary">Started in customer service and progressed into technical support for TracFone customers, assisting with airtime, billing, reception, troubleshooting, and replacement recommendations.</p>
+            <div class="role-content-grid">
+              <div>
+                <h4>Key responsibilities</h4>
+                <ul class="detail-list">
+                  <li>Assisted TracFone customers with adding airtime or minutes to their phones.</li>
+                  <li>Answered billing questions and reviewed basic account concerns.</li>
+                  <li>Progressed from a customer service role into a technical representative position.</li>
+                  <li>Helped customers troubleshoot signal and reception problems.</li>
+                  <li>Checked for signal towers near the customer’s area to identify possible reception options.</li>
+                  <li>Guided customers through standard device and network troubleshooting steps.</li>
+                  <li>Evaluated the issue after troubleshooting to determine the appropriate next action.</li>
+                  <li>Recommended a replacement phone or SIM card when the situation required it.</li>
+                  <li>Documented the concern, troubleshooting performed, and final resolution.</li>
+                </ul>
+              </div>
+              <div class="role-aside">
+                <div class="focus-card"><span>Focus areas</span><p>TracFone support · Airtime & billing · Signal research · Troubleshooting · Device/SIM replacement</p></div>
+                <div class="role-video" data-video="assets/videos/qualfon-role.mp4">
+                  <div class="play-mark">▶</div><div><strong>Role story video</strong><span>Add your first-role voice-over</span></div><button type="button" class="video-demo-button">Preview video space</button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="work section-shell" id="work" aria-labelledby="work-title">
+      <div class="section-heading reveal">
+        <p class="section-number">03 / Selected work</p>
+        <h2 id="work-title">Creative samples and working demos.</h2>
+        <p>Use the category tabs to organize design work, spreadsheet automations, and web-development demos.</p>
+      </div>
+
+      <div class="work-tabs reveal" role="tablist" aria-label="Portfolio categories">
+        <button class="work-tab active" role="tab" aria-selected="true" data-work="graphic-design">Graphic Design</button>
+        <button class="work-tab" role="tab" aria-selected="false" data-work="automations">Automations</button>
+        <button class="work-tab" role="tab" aria-selected="false" data-work="web-development">Web Development</button>
+        <button class="work-tab" role="tab" aria-selected="false" data-work="video-editing">Video Editing</button>
+      </div>
+
+      <div class="work-panel active" data-work-panel="graphic-design">
+        <div class="project-grid design-grid">
+          <button class="design-card reveal" type="button" data-lightbox="assets/images/delicious-american-food-ad.webp" data-caption="Delicious American Food Ad — a bold restaurant promotion with a strong offer and delivery call to action.">
+            <img src="assets/images/delicious-american-food-ad.webp" alt="Delicious American Food promotional graphic" />
+            <span><small>Food advertisement</small><strong>Delicious American Food</strong></span>
+          </button>
+          <button class="design-card reveal" type="button" data-lightbox="assets/images/luxury-home-for-sale.webp" data-caption="Luxury Home for Sale — a real-estate flyer with a hero property image, interior details, and amenities.">
+            <img src="assets/images/luxury-home-for-sale.webp" alt="Luxury Home for Sale real-estate flyer" />
+            <span><small>Real-estate flyer</small><strong>Luxury Home for Sale</strong></span>
+          </button>
+          <button class="design-card reveal" type="button" data-lightbox="assets/images/kierstin-bellamiere-first-birthday.webp" data-caption="Kierstin Bellamiere Turns One — a personalized mermaid-themed birthday design.">
+            <img src="assets/images/kierstin-bellamiere-first-birthday.webp" alt="Mermaid-themed first birthday design" />
+            <span><small>Birthday design</small><strong>Kierstin Turns One</strong></span>
+          </button>
+          <button class="design-card reveal" type="button" data-lightbox="assets/images/hot-wheels-gable-box.webp" data-caption="Hot Wheels Gable Box — a customized, print-ready party packaging design.">
+            <img src="assets/images/hot-wheels-gable-box.webp" alt="Hot Wheels themed custom gable box design" />
+            <span><small>Party packaging</small><strong>Hot Wheels Gable Box</strong></span>
+          </button>
+          <button class="design-card reveal" type="button" data-lightbox="assets/images/messi-sports-poster.webp" data-caption="Lionel Messi Sports Poster — a layered football composition with stadium scenery and action imagery.">
+            <img src="assets/images/messi-sports-poster.webp" alt="Lionel Messi football sports poster" />
+            <span><small>Sports composite</small><strong>Football Player Poster</strong></span>
+          </button>
+          <button class="design-card reveal" type="button" data-lightbox="assets/images/tenz-gaming-poster.webp" data-caption="Tenz Gaming Poster — an esports composition combining player photography, character artwork, and typography.">
+            <img src="assets/images/tenz-gaming-poster.webp" alt="Tenz esports gaming poster" />
+            <span><small>Esports graphic</small><strong>Gaming Profile Poster</strong></span>
+          </button>
+          <button class="design-card reveal" type="button" data-lightbox="assets/images/foodie-restaurant-menu.webp" data-caption="Foodie Restaurant Menu — an orange menu layout with product panels, food images, and pricing.">
+            <img src="assets/images/foodie-restaurant-menu.webp" alt="Foodie Restaurant menu design" />
+            <span><small>Restaurant menu</small><strong>Foodie Menu</strong></span>
+          </button>
+          <button class="design-card reveal" type="button" data-lightbox="assets/images/senior-graphic-artist-hiring-post.webp" data-caption="Senior Graphic Artist Hiring Post — a recruitment graphic with bold geometry and a clear application message.">
+            <img src="assets/images/senior-graphic-artist-hiring-post.webp" alt="Senior Graphic Artist recruitment post" />
+            <span><small>Recruitment graphic</small><strong>Hiring Post</strong></span>
+          </button>
+        </div>
+        <p class="editor-note">These samples were carried over from your current portfolio. Add more by duplicating a <code>.design-card</code> block and placing the new image inside <code>assets/images/</code>.</p>
+      </div>
+
+      <div class="work-panel" data-work-panel="automations" hidden>
+        <div class="demo-grid">
+          <article class="demo-card reveal">
+            <div class="browser-bar"><span></span><span></span><span></span><p>Player Management Sheet</p></div>
+            <div class="sheet-demo" aria-label="Sample player management spreadsheet interface">
+              <div class="sheet-toolbar"><b>Players</b><span>Applications</span><span>Partners</span><span>Follow-ups</span></div>
+              <div class="sheet-row sheet-head"><span>Player</span><span>Position</span><span>Status</span><span>Next step</span></div>
+              <div class="sheet-row"><span>Player 001</span><span>Forward</span><span class="pill">Ready</span><span>Send CV</span></div>
+              <div class="sheet-row"><span>Player 002</span><span>Midfielder</span><span class="pill outline">Review</span><span>Update video</span></div>
+              <div class="sheet-row"><span>Player 003</span><span>Defender</span><span class="pill dark">Sent</span><span>Follow up</span></div>
+            </div>
+            <div class="demo-copy">
+              <div><small>Google Sheets</small><h3>Player Data & Follow-up System</h3></div>
+              <p>A structured view for player information, profile readiness, partner forwarding, and next actions.</p>
+              <a href="#" class="text-link demo-link" data-placeholder-link>Open player sheet <span>↗</span></a>
+            </div>
+          </article>
+
+          <article class="demo-card reveal">
+            <div class="browser-bar"><span></span><span></span><span></span><p>Attendance Automation</p></div>
+            <div class="attendance-demo" aria-label="Sample attendance automation interface">
+              <div class="form-preview">
+                <p>Attendance action</p>
+                <label>Name <span>Select participant⌄</span></label>
+                <div class="action-options"><b>Clock in</b><span>Clock out</span></div>
+                <button type="button">Submit record</button>
+              </div>
+              <div class="log-preview"><small>RECENT RECORDS</small><p><span>09:01</span> Player 001 · In</p><p><span>12:18</span> Player 002 · Out</p><p><span>13:04</span> Player 003 · In</p></div>
+            </div>
+            <div class="demo-copy">
+              <div><small>Google Forms + Sheets</small><h3>Attendance Logger</h3></div>
+              <p>A form-driven workflow that records clock-in and clock-out responses in an organized sheet.</p>
+              <div class="demo-links"><a href="https://docs.google.com/forms/d/e/1FAIpQLSeCS88u_fDb6PdZce1y4601EKxZX_V9UrFVraKz1EZwl0fB3Q/viewform" class="text-link demo-link" target="_blank" rel="noopener noreferrer">Open form <span>↗</span></a><a href="https://docs.google.com/spreadsheets/d/1wRYc5T1RzXDF9bp15wUeOjLNSS5HcGFxfSrjvPp9EkQ/edit?gid=262393505" class="text-link demo-link" target="_blank" rel="noopener noreferrer">View sheet <span>↗</span></a></div>
+            </div>
+          </article>
+
+          <article class="demo-card reveal">
+            <div class="browser-bar"><span></span><span></span><span></span><p>Sinking Fund Tracker</p></div>
+            <div class="fund-demo" aria-label="Sample sinking fund automation dashboard">
+              <div class="fund-total"><small>TOTAL SAVED</small><strong>₱ 42,500</strong><span>68% of active goals</span></div>
+              <div class="fund-bars"><p><span>Emergency</span><b><i style="width:78%"></i></b><em>78%</em></p><p><span>Equipment</span><b><i style="width:55%"></i></b><em>55%</em></p><p><span>Travel</span><b><i style="width:36%"></i></b><em>36%</em></p></div>
+            </div>
+            <div class="demo-copy">
+              <div><small>Google Sheets</small><h3>Sinking Fund Automation</h3></div>
+              <p>A savings tracker for contribution planning, progress visibility, and organized financial goals.</p>
+              <a href="https://docs.google.com/spreadsheets/d/1hNVcJ39BcrtARwJ6GZvx6fVL2NWwE2NE44VNQ_OMOl8/edit?gid=1539822423" class="text-link demo-link" target="_blank" rel="noopener noreferrer">Open live sheet <span>↗</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="work-panel" data-work-panel="web-development" hidden>
+        <div class="demo-grid web-demo-grid">
+          <article class="demo-card reveal">
+            <div class="browser-bar"><span></span><span></span><span></span><p>Portfolio Demo</p></div>
+            <div class="website-demo website-demo-one">
+              <nav><strong>AA.</strong><span>About&nbsp;&nbsp;Work&nbsp;&nbsp;Contact</span></nav>
+              <div><small>PORTFOLIO / 2026</small><h3>Clean ideas.<br />Useful results.</h3><button type="button">Explore work</button></div>
+            </div>
+            <div class="demo-copy"><div><small>HTML · CSS · JavaScript</small><h3>Personal Portfolio</h3></div><p>A responsive portfolio concept focused on experience storytelling and visual work.</p><a href="#" class="text-link demo-link" data-placeholder-link>View live project <span>↗</span></a></div>
+          </article>
+
+          <article class="demo-card reveal">
+            <div class="browser-bar"><span></span><span></span><span></span><p>Dashboard Demo</p></div>
+            <div class="website-demo dashboard-demo">
+              <aside><strong>PX</strong><i></i><i></i><i></i><i></i></aside>
+              <div><header><span>Overview</span><b>AA</b></header><section><article><small>ACTIVE</small><strong>28</strong></article><article><small>READY</small><strong>17</strong></article><article><small>SENT</small><strong>11</strong></article></section><div class="chart-lines"><i></i><i></i><i></i><i></i><i></i></div></div>
+            </div>
+            <div class="demo-copy"><div><small>UI Practice</small><h3>Player Dashboard</h3></div><p>A compact dashboard concept for monitoring player profiles, readiness, and forwarding status.</p><a href="#" class="text-link demo-link" data-placeholder-link>View live project <span>↗</span></a></div>
+          </article>
+
+          <article class="demo-card reveal">
+            <div class="browser-bar"><span></span><span></span><span></span><p>Product Page Demo</p></div>
+            <div class="website-demo product-demo">
+              <div class="product-image">CUSTOM<br /><span>PRINT</span></div><div class="product-copy"><small>LOCAL PRINT STUDIO</small><h3>Made for your moments.</h3><p>Personalized shirts, mugs, souvenirs, and party favors.</p><button type="button">Browse products</button></div>
+            </div>
+            <div class="demo-copy"><div><small>Web Design Practice</small><h3>Printing Business Landing Page</h3></div><p>A storefront concept for showcasing custom print products and collecting inquiries.</p><a href="#" class="text-link demo-link" data-placeholder-link>View live project <span>↗</span></a></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="work-panel" data-work-panel="video-editing" hidden>
+        <div class="video-grid">
+          <article class="video-project reveal">
+            <div class="video-stage"><span>16:9 VIDEO</span><button type="button" class="video-demo-button"><i>▶</i> Add sample</button></div>
+            <div><small>Adobe Premiere Pro</small><h3>Sports Highlight Edit</h3><p>Add your edited highlight reel, project notes, and a short description of your editing choices.</p></div>
+          </article>
+          <article class="video-project reveal">
+            <div class="video-stage"><span>16:9 VIDEO</span><button type="button" class="video-demo-button"><i>▶</i> Add sample</button></div>
+            <div><small>After Effects</small><h3>Motion Graphics Study</h3><p>Use this space for typography animation, transitions, logo motion, or another self-study exercise.</p></div>
+          </article>
+          <article class="video-project reveal">
+            <div class="video-stage"><span>9:16 VIDEO</span><button type="button" class="video-demo-button"><i>▶</i> Add sample</button></div>
+            <div><small>Short-form content</small><h3>Social Video Edit</h3><p>Show a vertical video optimized for Instagram Reels, TikTok, or another social platform.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills section-shell" id="skills" aria-labelledby="skills-title">
+      <div class="section-heading reveal">
+        <p class="section-number">04 / Skills & tools</p>
+        <h2 id="skills-title">What I use to support, organize, investigate, and create.</h2>
+      </div>
+
+      <div class="skills-grid">
+        <article class="skill-column reveal">
+          <p>Core strengths</p>
+          <ul>
+            <li>Administrative support</li><li>Customer communication</li><li>Technical troubleshooting</li><li>Case investigation</li><li>Research & evidence gathering</li><li>Technical writing</li><li>Data organization</li><li>Partner outreach</li>
+          </ul>
+        </article>
+        <article class="skill-column reveal">
+          <p>Tools & platforms</p>
+          <ul>
+            <li>Google Sheets</li><li>Google Forms</li><li>Microsoft Office</li><li>LinkedIn</li><li>Discord</li><li>CRM & support tools</li><li>Social media platforms</li><li>VS Code & GitHub</li>
+          </ul>
+        </article>
+        <article class="skill-column reveal">
+          <p>Creative toolkit</p>
+          <ul>
+            <li>Adobe Illustrator</li><li>Adobe Photoshop</li><li>Canva</li><li>Print design</li><li>Vector graphics</li><li>Photo composition</li><li>Adobe Premiere Pro · learning</li><li>After Effects · learning</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="learning-banner reveal">
+        <p class="eyebrow">Currently learning</p>
+        <h3>Automation systems, web development, Premiere Pro, and After Effects.</h3>
+        <p>I enjoy expanding my technical skills through self-directed practice and small working projects.</p>
+      </div>
+    </section>
+
+    <section class="contact section-shell" id="contact" aria-labelledby="contact-title">
+      <div class="contact-card reveal">
+        <div>
+          <p class="section-number">05 / Contact</p>
+          <h2 id="contact-title">Need organized support with a creative, detail-focused approach?</h2>
+          <p>I’m interested in remote opportunities involving administration, customer support, operations, technical writing, spreadsheet automation, and creative production.</p>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:aabaquita22@gmail.com"><span>Email</span><strong>aabaquita22@gmail.com</strong><i>↗</i></a>
+          <a href="tel:+639674330745"><span>Phone</span><strong>+63 967 433 0745</strong><i>↗</i></a>
+          <a href="assets/Aydelore-Abaquita-Resume.pdf"><span>Document</span><strong>View résumé</strong><i>↗</i></a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer"><span>Network</span><strong>Add LinkedIn profile</strong><i>↗</i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer section-shell">
+    <p>© <span id="current-year"></span> Aydelore Abaquita</p>
+    <p>Designed for GitHub Pages · Built with HTML, CSS & JavaScript</p>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <dialog class="lightbox" id="lightbox">
+    <button class="lightbox-close" type="button" aria-label="Close image">×</button>
+    <img src="" alt="Expanded portfolio sample" />
+    <p></p>
+  </dialog>
+
+  <dialog class="video-modal" id="video-modal">
+    <button class="lightbox-close" type="button" aria-label="Close video preview">×</button>
+    <div class="modal-video-placeholder">
+      <span>▶</span>
+      <h3>Your video will appear here.</h3>
+      <p>Place the MP4 file in <code>assets/videos/</code> and use the filename already assigned in the role card.</p>
+    </div>
+  </dialog>
 </body>
 </html>

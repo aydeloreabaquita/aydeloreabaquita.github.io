@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="850" viewBox="0 0 700 850">
+<rect width="700" height="850" fill="#d9d9d7"/>
+<circle cx="350" cy="285" r="120" fill="#b4b4b2"/>
+<path d="M130 820c16-215 106-336 220-336s204 121 220 336" fill="#a4a4a2"/>
+<path d="M0 0h700v850H0z" fill="none" stroke="#8e8e8c" stroke-width="2"/>
+<text x="350" y="95" text-anchor="middle" font-family="monospace" font-size="15" fill="#6d6d6b" letter-spacing="3">YOUR PORTRAIT</text>
+</svg>
