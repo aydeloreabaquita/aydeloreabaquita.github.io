@@ -1969,3 +1969,8 @@ dialog {
   color: var(--text-soft);
   margin-bottom: 16px;
 }
+
+/* Remove role voice-over video boxes from every Experience tab */
+.page-experience .role-video {
+  display: none !important;
+}
