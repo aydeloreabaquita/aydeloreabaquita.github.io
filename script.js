@@ -203,8 +203,6 @@ if (currentYear) currentYear.textContent = new Date().getFullYear();
 const saberSelector = [
   /* Home: Portfolio box and portrait box */
   ".page-home .hero-copy",
-  ".page-home .hero-card",
-
   /* About: upper introduction box only */
   ".page-about .page-intro",
 
