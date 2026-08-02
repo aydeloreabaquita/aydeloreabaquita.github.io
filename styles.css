@@ -1826,136 +1826,117 @@ dialog {
   }
 }
 
-/* =========================
-   SABER LIGHT FRAME EFFECT
-   ========================= */
+/* ==================================================
+   SABER EDGE TRACER
+   A glowing light segment follows each card's border
+   ================================================== */
 
-/* Apply to the cards / frames you want */
-.hero-card,
-.page-link-card,
-.role-panel,
-.design-card,
-.demo-card,
-.skill-column,
-.contact-card,
-.video-project,
-.work-panel,
-.about-copy,
-.learning-banner,
-.discipline-list article {
+.saber-frame {
   position: relative;
-  overflow: hidden;
   isolation: isolate;
 }
 
-/* Animated light border */
-.hero-card::before,
-.page-link-card::before,
-.role-panel::before,
-.design-card::before,
-.demo-card::before,
-.skill-column::before,
-.contact-card::before,
-.video-project::before,
-.work-panel::before,
-.about-copy::before,
-.learning-banner::before,
-.discipline-list article::before {
-  content: "";
+/* SVG overlay created by script.js */
+.saber-trace {
   position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  padding: 2px;
-  background: conic-gradient(
-    from 0deg,
-    rgba(255, 255, 255, 0) 0deg,
-    rgba(255, 255, 255, 0) 260deg,
-    rgba(255, 150, 230, 0.95) 300deg,
-    rgba(190, 150, 255, 1) 325deg,
-    rgba(255, 255, 255, 0.95) 340deg,
-    rgba(255, 255, 255, 0) 360deg
-  );
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  animation: saberSweep 8s linear infinite;
+  inset: 0;
+  z-index: 50;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
   pointer-events: none;
-  z-index: 2;
-  filter: blur(0.4px);
-  opacity: 0.9;
-}
-
-/* Optional soft glow */
-.hero-card::after,
-.page-link-card::after,
-.role-panel::after,
-.design-card::after,
-.demo-card::after,
-.skill-column::after,
-.contact-card::after,
-.video-project::after,
-.work-panel::after,
-.about-copy::after,
-.learning-banner::after,
-.discipline-list article::after {
-  content: "";
-  position: absolute;
-  inset: -12px;
   border-radius: inherit;
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(255, 140, 220, 0.08),
-    rgba(180, 140, 255, 0.05),
-    transparent 65%
-  );
-  opacity: 0.6;
-  z-index: 0;
-  pointer-events: none;
 }
 
-/* Make sure card content stays above glow */
-.hero-card > *,
-.page-link-card > *,
-.role-panel > *,
-.design-card > *,
-.demo-card > *,
-.skill-column > *,
-.contact-card > *,
-.video-project > *,
-.work-panel > *,
-.about-copy > *,
-.learning-banner > *,
-.discipline-list article > * {
-  position: relative;
-  z-index: 3;
+.saber-trace rect {
+  fill: none;
+  vector-effect: non-scaling-stroke;
 }
 
-/* Slow motion */
-@keyframes saberSweep {
-  0% {
-    transform: rotate(0deg);
+/* Very subtle permanent frame */
+.saber-track {
+  stroke: rgba(255, 255, 255, 0.09);
+  stroke-width: 1;
+}
+
+/* Wide colored glow surrounding the light */
+.saber-beam-glow {
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 110 890;
+  stroke-dashoffset: 0;
+  opacity: 0.75;
+
+  filter:
+    drop-shadow(0 0 3px rgba(255, 126, 220, 0.95))
+    drop-shadow(0 0 8px rgba(255, 126, 220, 0.75))
+    drop-shadow(0 0 15px rgba(166, 130, 255, 0.7));
+
+  animation:
+    saberEdgeTrace var(--saber-duration, 14s)
+    linear
+    infinite;
+
+  animation-delay: var(--saber-delay, 0s);
+}
+
+/* Bright white center, like a saber core */
+.saber-beam-core {
+  stroke: rgba(255, 255, 255, 0.98);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-dasharray: 110 890;
+  stroke-dashoffset: 0;
+
+  filter:
+    drop-shadow(0 0 2px rgba(255, 255, 255, 1))
+    drop-shadow(0 0 5px rgba(255, 175, 235, 0.95));
+
+  animation:
+    saberEdgeTrace var(--saber-duration, 14s)
+    linear
+    infinite;
+
+  animation-delay: var(--saber-delay, 0s);
+}
+
+/* Smaller bright tip leading the beam */
+.saber-beam-tip {
+  stroke: #ffffff;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 12 988;
+  stroke-dashoffset: 0;
+
+  filter:
+    drop-shadow(0 0 3px #ffffff)
+    drop-shadow(0 0 7px #ff8fda)
+    drop-shadow(0 0 14px #a98bff);
+
+  animation:
+    saberEdgeTrace var(--saber-duration, 14s)
+    linear
+    infinite;
+
+  animation-delay: var(--saber-delay, 0s);
+}
+
+@keyframes saberEdgeTrace {
+  from {
+    stroke-dashoffset: 0;
   }
-  100% {
-    transform: rotate(360deg);
+
+  to {
+    stroke-dashoffset: -1000;
   }
 }
 
-/* Accessibility */
+/* Pause only when the browser explicitly requests reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .hero-card::before,
-  .page-link-card::before,
-  .role-panel::before,
-  .design-card::before,
-  .demo-card::before,
-  .skill-column::before,
-  .contact-card::before,
-  .video-project::before,
-  .work-panel::before,
-  .about-copy::before,
-  .learning-banner::before,
-  .discipline-list article::before {
+  .saber-beam-glow,
+  .saber-beam-core,
+  .saber-beam-tip {
     animation: none;
+    opacity: 0.35;
   }
 }
