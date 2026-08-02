@@ -10,12 +10,12 @@ A responsive personal portfolio built with plain HTML, CSS, and JavaScript for G
 - `assets/images/profile-photo.png` — portfolio portrait
 - `assets/images/` — graphic-design samples and site artwork
 - `assets/videos/` — place future role and editing videos here
-- `assets/Aydelore-Abaquita-Resume.pdf` — résumé download
+- `assets/resume - Aydelore Abaquita.pdf` — résumé download
 
 ## Replace the current files in VS Code
 
 1. Extract the ZIP.
-2. Copy everything inside the extracted `aydelore-portfolio` folder.
+2. Copy everything inside the extracted `aydeloreabaquita.github.io-final` folder.
 3. Paste the files directly into the root of your local `aydeloreabaquita.github.io` folder.
 4. Choose **Replace the files in the destination** when prompted.
 5. Keep the hidden `.git` folder in your GitHub repository. Do not delete it.
@@ -26,14 +26,27 @@ The correct structure is:
 aydeloreabaquita.github.io/
 ├── assets/
 │   ├── images/
-│   │   └── profile-photo.png
-│   └── videos/
+│   │   ├── profile-photo.png
+│   │   └── portfolio image files...
+│   ├── videos/
+│   │   └── add your MP4 files here
+│   └── resume - Aydelore Abaquita.pdf
 ├── index.html
 ├── styles.css
 ├── script.js
 ├── README.md
 └── .gitignore
 ```
+
+## Final revision included
+
+- Player Data & Follow-up System removed from the Automations section
+- Resume button placed beside Explore Experience and View Portfolio
+- Resume link matched to `resume - Aydelore Abaquita.pdf`
+- Portrait and portfolio images stored in the correct `assets/images/` folder
+- Video modal configured to load MP4 files from `assets/videos/` and show a clear message when a file has not yet been added
+
+**Important:** the ZIP includes the full image set and résumé. Your personal role and editing MP4 files are not included because they have not been provided in this chat. Add them to `assets/videos/` using the filenames below.
 
 ## Preview locally
 
@@ -72,7 +85,7 @@ Replace the placeholder `href="#"` values with the correct Sheet, demo, or GitHu
 
 ## Add role videos
 
-Place MP4 files inside `assets/videos/`. The role cards currently open a styled placeholder modal. When a role video is ready, replace that role’s `.role-video` block with a standard HTML `<video>` element.
+Place MP4 files inside `assets/videos/`. The role and video-editing cards already use the built-in video modal. Add each MP4 to `assets/videos/` with the exact filename listed below; no HTML change is needed.
 
 Recommended export:
 
@@ -93,3 +106,42 @@ The main theme colors are at the top of `styles.css`:
 ```
 
 Changing those four values updates most of the site.
+
+
+## Media file setup
+
+All image and video paths are case-sensitive on GitHub Pages. Keep the folders and filenames exactly as written.
+
+### Portfolio images
+
+Place graphic-design images in `assets/images/`. The current design expects these files:
+
+- `delicious-american-food-ad.webp`
+- `luxury-home-for-sale.webp`
+- `kierstin-bellamiere-first-birthday.webp`
+- `hot-wheels-gable-box.webp`
+- `messi-sports-poster.webp`
+- `tenz-gaming-poster.webp`
+- `foodie-restaurant-menu.webp`
+- `senior-graphic-artist-hiring-post.webp`
+
+### Role videos
+
+Place MP4 files in `assets/videos/` using these exact names:
+
+- `futxperform-role.mp4`
+- `speak-globally-role.mp4`
+- `appeals-assassins-role.mp4`
+- `5ca-role.mp4`
+- `loving-not-working-role.mp4`
+- `signifyd-role.mp4`
+- `ebay-role.mp4`
+- `qualfon-role.mp4`
+
+### Video-editing samples
+
+- `sports-highlight.mp4`
+- `motion-graphics.mp4`
+- `social-video.mp4`
+
+Use MP4 files encoded with H.264 video and AAC audio for the widest browser compatibility. After adding media, run `git add -A`, commit, and push again.

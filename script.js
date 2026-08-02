@@ -7,6 +7,9 @@ const workTabs = [...document.querySelectorAll('.work-tab')];
 const workPanels = [...document.querySelectorAll('.work-panel')];
 const lightbox = document.querySelector('#lightbox');
 const videoModal = document.querySelector('#video-modal');
+const videoPlayer = document.querySelector('#portfolio-video-player');
+const videoStatus = document.querySelector('#video-status');
+const videoFilePath = document.querySelector('#video-file-path');
 
 window.addEventListener('scroll', () => {
   header.classList.toggle('scrolled', window.scrollY > 8);
@@ -114,12 +117,42 @@ document.querySelectorAll('.lightbox-close').forEach((button) => {
   dialog.addEventListener('close', () => document.body.classList.remove('dialog-open'));
 });
 
+function resetVideoModal() {
+  videoPlayer.pause();
+  videoPlayer.removeAttribute('src');
+  videoPlayer.load();
+  videoPlayer.hidden = true;
+  videoStatus.hidden = false;
+}
+
+function openPortfolioVideo(videoPath) {
+  resetVideoModal();
+  videoFilePath.textContent = videoPath || 'assets/videos/your-video.mp4';
+
+  if (videoPath) {
+    videoPlayer.src = videoPath;
+    videoPlayer.hidden = false;
+    videoStatus.hidden = true;
+    videoPlayer.load();
+  }
+
+  videoModal.showModal();
+  document.body.classList.add('dialog-open');
+}
+
+videoPlayer.addEventListener('error', () => {
+  videoPlayer.hidden = true;
+  videoStatus.hidden = false;
+});
+
 document.querySelectorAll('.video-demo-button').forEach((button) => {
   button.addEventListener('click', () => {
-    videoModal.showModal();
-    document.body.classList.add('dialog-open');
+    const videoContainer = button.closest('[data-video]');
+    openPortfolioVideo(videoContainer?.dataset.video || '');
   });
 });
+
+videoModal.addEventListener('close', resetVideoModal);
 
 document.querySelectorAll('[data-placeholder-link]').forEach((link) => {
   link.addEventListener('click', (event) => {

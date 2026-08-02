@@ -1056,6 +1056,15 @@ code {
   line-height: 1;
   cursor: pointer;
 }
+.modal-video-player {
+  display: block;
+  width: 100%;
+  max-height: 82vh;
+  background: #000;
+}
+.modal-video-player[hidden],
+.modal-video-placeholder[hidden] { display: none; }
+
 .modal-video-placeholder {
   min-height: 540px;
   display: grid;
