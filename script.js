@@ -193,3 +193,232 @@ document.querySelectorAll('[data-placeholder-link]').forEach((link) => {
 
 const currentYear = document.querySelector('#current-year');
 if (currentYear) currentYear.textContent = new Date().getFullYear();
+
+/* ==================================================
+   SABER EDGE TRACER
+   Creates an SVG path that follows each card's edges
+   ================================================== */
+
+(() => {
+  const saberSelector = [
+    ".hero-card",
+    ".page-link-card",
+    ".role-panel",
+    ".design-card",
+    ".demo-card",
+    ".video-project",
+    ".skill-column",
+    ".contact-card",
+    ".about-copy",
+    ".learning-banner",
+    ".discipline-list article"
+  ].join(",");
+
+  const targets = [...document.querySelectorAll(saberSelector)];
+
+  if (targets.length === 0) {
+    return;
+  }
+
+  const svgNamespace = "http://www.w3.org/2000/svg";
+  const animationDuration = 14;
+
+  /*
+   * Save one animation starting time for the browser tab.
+   * This keeps the tracer moving in the same direction and phase
+   * when moving between Home, Work, Skills, and other pages.
+   */
+  const startStorageKey = "portfolio-saber-animation-start";
+
+  let animationStartedAt = Number(
+    sessionStorage.getItem(startStorageKey)
+  );
+
+  if (
+    !Number.isFinite(animationStartedAt) ||
+    animationStartedAt <= 0
+  ) {
+    animationStartedAt = Date.now();
+
+    sessionStorage.setItem(
+      startStorageKey,
+      String(animationStartedAt)
+    );
+  }
+
+  const elapsedSeconds =
+    (Date.now() - animationStartedAt) / 1000;
+
+  function createSvgElement(tagName, attributes = {}) {
+    const element = document.createElementNS(
+      svgNamespace,
+      tagName
+    );
+
+    Object.entries(attributes).forEach(([name, value]) => {
+      element.setAttribute(name, String(value));
+    });
+
+    return element;
+  }
+
+  function createStop(offset, color, opacity = 1) {
+    return createSvgElement("stop", {
+      offset,
+      "stop-color": color,
+      "stop-opacity": opacity
+    });
+  }
+
+  function addSaberTracer(target, index) {
+    /*
+     * Prevent duplicate tracers if this script is accidentally
+     * loaded more than once.
+     */
+    if (target.querySelector(":scope > .saber-trace")) {
+      return;
+    }
+
+    target.classList.add("saber-frame");
+
+    const uniqueId = `saber-gradient-${index}-${Date.now()}`;
+
+    const svg = createSvgElement("svg", {
+      class: "saber-trace",
+      "aria-hidden": "true",
+      preserveAspectRatio: "none"
+    });
+
+    const definitions = createSvgElement("defs");
+
+    const gradient = createSvgElement("linearGradient", {
+      id: uniqueId,
+      x1: "0%",
+      y1: "0%",
+      x2: "100%",
+      y2: "100%"
+    });
+
+    gradient.append(
+      createStop("0%", "#ff83d5"),
+      createStop("42%", "#ffb8ea"),
+      createStop("65%", "#ffffff"),
+      createStop("82%", "#c4a6ff"),
+      createStop("100%", "#9276ff")
+    );
+
+    definitions.appendChild(gradient);
+    svg.appendChild(definitions);
+
+    const track = createSvgElement("rect", {
+      class: "saber-track",
+      pathLength: "1000"
+    });
+
+    const glow = createSvgElement("rect", {
+      class: "saber-beam-glow",
+      pathLength: "1000",
+      stroke: `url(#${uniqueId})`
+    });
+
+    const core = createSvgElement("rect", {
+      class: "saber-beam-core",
+      pathLength: "1000"
+    });
+
+    const tip = createSvgElement("rect", {
+      class: "saber-beam-tip",
+      pathLength: "1000"
+    });
+
+    svg.append(track, glow, core, tip);
+    target.appendChild(svg);
+
+    const rectangles = [track, glow, core, tip];
+
+    function updateTracerSize() {
+      const width = target.clientWidth;
+      const height = target.clientHeight;
+
+      /*
+       * Hidden tab panels temporarily have zero dimensions.
+       * ResizeObserver will call this again when they become visible.
+       */
+      if (width <= 0 || height <= 0) {
+        return;
+      }
+
+      const computedStyles = window.getComputedStyle(target);
+
+      const borderRadius =
+        Number.parseFloat(computedStyles.borderRadius) || 20;
+
+      const inset = 4;
+
+      const maximumRadius =
+        Math.max(0, Math.min(width, height) / 2 - inset);
+
+      const radius = Math.min(borderRadius, maximumRadius);
+
+      svg.setAttribute(
+        "viewBox",
+        `0 0 ${width} ${height}`
+      );
+
+      rectangles.forEach((rectangle) => {
+        rectangle.setAttribute("x", String(inset));
+        rectangle.setAttribute("y", String(inset));
+
+        rectangle.setAttribute(
+          "width",
+          String(Math.max(0, width - inset * 2))
+        );
+
+        rectangle.setAttribute(
+          "height",
+          String(Math.max(0, height - inset * 2))
+        );
+
+        rectangle.setAttribute("rx", String(radius));
+        rectangle.setAttribute("ry", String(radius));
+      });
+    }
+
+    /*
+     * Stagger each frame slightly so every card does not have
+     * its tracer at exactly the same position.
+     */
+    const staggerSeconds = index * 0.8;
+
+    const currentPhase =
+      (elapsedSeconds + staggerSeconds) %
+      animationDuration;
+
+    target.style.setProperty(
+      "--saber-duration",
+      `${animationDuration}s`
+    );
+
+    target.style.setProperty(
+      "--saber-delay",
+      `${-currentPhase}s`
+    );
+
+    updateTracerSize();
+
+    if ("ResizeObserver" in window) {
+      const resizeObserver = new ResizeObserver(() => {
+        updateTracerSize();
+      });
+
+      resizeObserver.observe(target);
+    } else {
+      window.addEventListener(
+        "resize",
+        updateTracerSize
+      );
+    }
+  }
+
+  targets.forEach(addSaberTracer);
+})();
