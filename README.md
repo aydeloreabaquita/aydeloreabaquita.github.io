@@ -55,7 +55,7 @@ Example:
 
 ## Media paths
 
-Keep images in `assets/images/`, the résumé at `assets/resume - Aydelore Abaquita.pdf`, and future MP4 files in `assets/videos/`.
+Keep the résumé at the repository root as `resume - Aydelore Abaquita.pdf`. Existing media files are also stored at the repository root.
 
 ## Continuous background motion across pages
 
