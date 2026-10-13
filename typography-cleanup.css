@@ -1,7 +1,7 @@
 /* Site-wide typography and decorative cleanup.
-   Place a properly licensed Daustley.woff2 at fonts/Daustley.woff2
+   Place a properly licensed Daustley.woff2 at fonts/Daustley.otf
    when you have website embedding rights. */
-@font-face{font-family:"Daustley";src:url("fonts/Daustley.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:swap}
+@font-face{font-family:"Daustley";src:url("fonts/Daustley.woff2") format("opentype");font-style:normal;font-weight:400;font-display:swap}
 html,body,button,input,textarea,select,h1,h2,h3,h4,.brand-copy strong,.hero-tag,.hero-stats strong,.role-tab .tab-title,.discipline-list article>span,.role-index,.fund-total strong,.demo-copy h3,.video-project h3,.contact-links a strong{font-family:"Daustley","Poppins",Arial,sans-serif!important}
 .brand-mark{display:none!important}
 .brand{gap:0}
