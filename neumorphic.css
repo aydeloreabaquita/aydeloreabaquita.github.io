@@ -1,0 +1,17 @@
+/* Neumorphic visual override: preserves existing sizes, positions and markup. */
+:root,body[data-theme="light"]{--bg:#e6e6e6;--bg-soft:#e6e6e6;--panel:#e6e6e6;--panel-strong:#e6e6e6;--panel-2:#e6e6e6;--text:#303138;--text-soft:#63646b;--muted:#777980;--line:rgba(255,255,255,.75);--pink:#a62236;--pink-2:#a62236;--violet:#b44257;--violet-2:#b44257;--blue:#a62236;--gradient:linear-gradient(135deg,#a62236,#b44257);--glow:12px 12px 26px #c3c3c3,-12px -12px 26px #fff;--blur:none;color-scheme:light}
+body[data-theme="dark"]{--bg:#24262b;--bg-soft:#24262b;--panel:#24262b;--panel-strong:#24262b;--panel-2:#24262b;--text:#f1f1f3;--text-soft:#c3c3c9;--muted:#a9a9b2;--line:rgba(255,255,255,.08);--pink:#ff8190;--pink-2:#ff8190;--violet:#d38796;--violet-2:#d38796;--blue:#ff8190;--gradient:linear-gradient(135deg,#ff8190,#d38796);--glow:12px 12px 26px #17181c,-12px -12px 26px #34363d;color-scheme:dark}
+body,body[data-theme="dark"]{background:var(--bg)!important;color:var(--text);transition:background .25s,color .25s}
+body::before,.ambient-orbs{display:none!important}
+.glass-card,.hero-card,.hero-stats article,.role-tab,.role-panel,.design-card,.demo-card,.skill-column,.learning-banner,.contact-card,.discipline-list article,.site-header,.header-cta,.button,.role-video,.focus-card,.video-project,.video-stage,.lightbox,.video-modal,.contact-links a,.work-tab,.work-tabs,.work-panel,.about-copy,.hero-copy,.page-intro,.page-link-card,.brand-mark,.discipline-list article>span,.role-index,.play-mark,.fund-total,.form-preview,.log-preview,.attendance-demo,.website-demo,.fund-demo,.video-demo-button{background:var(--panel)!important;border:1px solid var(--line)!important;box-shadow:var(--glow),inset 1px 1px 2px rgba(255,255,255,.19)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.hero-copy::before,.hero-copy::after,.hero-card::before,.page-intro::after{display:none!important}
+.site-header.scrolled{background:var(--panel)!important}
+.button-primary,.header-cta,.work-tab.active,.video-demo-button,.video-stage button{background:var(--panel)!important;color:var(--pink)!important;box-shadow:var(--glow)!important}
+.role-tab.active,.work-tab.active{background:var(--panel)!important;box-shadow:inset 5px 5px 10px rgba(0,0,0,.14),inset -5px -5px 10px rgba(255,255,255,.35)!important}
+body[data-theme="dark"] .role-tab.active,body[data-theme="dark"] .work-tab.active{box-shadow:inset 5px 5px 10px #15161a,inset -5px -5px 10px #35373e!important}
+.hero h1,.large-copy,.role-index,.play-mark,.log-preview span,.text-link{color:var(--text)!important;text-shadow:none!important}
+.primary-nav a:hover,.primary-nav a:focus-visible{color:var(--text)!important}
+.saber-trace{display:none!important}
+.theme-toggle{position:fixed;right:20px;bottom:20px;z-index:1400;width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--text);box-shadow:var(--glow);cursor:pointer;font-size:22px;display:grid;place-items:center}
+.theme-toggle:focus-visible{outline:3px solid var(--pink);outline-offset:4px}
+@media(max-width:640px){.theme-toggle{right:14px;bottom:14px;width:46px;height:46px}}
