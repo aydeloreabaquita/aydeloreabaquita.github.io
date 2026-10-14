@@ -5,3 +5,22 @@
 .page-link-card>span,.page-link-card>i{display:none!important}
 .header-cta>span,.text-link>span,.contact-links a>i{display:none!important}
 .site-footer{justify-content:space-between}
+
+/* Inset header branding a little farther from the edge. */
+.site-header .brand { padding-left: 18px; }
+@media (max-width: 760px) { .site-header .brand { padding-left: 6px; } }
+/* ClearFlow live demo card illustration. */
+.clearflow-preview { display:flex; min-height:215px; overflow:hidden; margin:0 16px; border-radius:15px; background:#f6faff; border:1px solid #dae5f8; }
+.clearflow-preview-side { width:27%; background:linear-gradient(160deg,#63baff,#398eff); padding:18px 11px; display:flex; flex-direction:column; gap:12px; }
+.clearflow-preview-logo { color:#fff; font:700 17px "League Spartan",sans-serif; margin-bottom:8px; }
+.clearflow-preview-side i { display:block; height:10px; width:84%; border-radius:6px; background:#ffffff91; }
+.clearflow-preview-side i:nth-child(3) { background:white; }
+.clearflow-preview-main { flex:1; padding:20px 14px; min-width:0; }
+.clearflow-preview-title { color:#17264c; font:700 19px "League Spartan",sans-serif; }
+.clearflow-preview-title small { display:block; font:500 9px "Poppins",sans-serif; color:#7895b4; margin-top:5px; }
+.clearflow-preview-metrics { display:flex; gap:7px; margin:20px 0 16px; }
+.clearflow-preview-metrics span { height:40px; flex:1; border-radius:8px; background:#e1edfc; border:1px solid #d4e4fa; }
+.clearflow-preview-table { display:grid; gap:7px; }
+.clearflow-preview-table span { height:11px; background:#dce9f8; border-radius:5px; }
+.clearflow-preview-table span:nth-child(even) { width:85%; }
+@media (max-width:560px) { .clearflow-preview { min-height:160px; margin:0 8px; } .clearflow-preview-main { padding:12px 9px; } }
