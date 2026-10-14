@@ -24,3 +24,10 @@
 .clearflow-preview-table span { height:11px; background:#dce9f8; border-radius:5px; }
 .clearflow-preview-table span:nth-child(even) { width:85%; }
 @media (max-width:560px) { .clearflow-preview { min-height:160px; margin:0 8px; } .clearflow-preview-main { padding:12px 9px; } }
+
+/* Website screenshots for Live Demos */
+.live-demo-image-link { position:relative; display:block; overflow:hidden; margin:0 16px; border-radius:15px; aspect-ratio:16/10; border:1px solid rgba(255,255,255,.15); background:#111b2c; }
+.live-demo-screenshot { display:block; width:100%; height:100%; object-fit:cover; object-position:top center; transition:transform .35s ease; color:#cdd7ea; font-size:12px; }
+.live-demo-image-link:hover .live-demo-screenshot { transform:scale(1.035); }
+.live-demo-image-cta { position:absolute; right:12px; bottom:12px; font:600 11px "Poppins",sans-serif; color:#fff; background:rgba(14,20,35,.88); border:1px solid rgba(255,255,255,.3); border-radius:999px; padding:7px 11px; }
+@media(max-width:560px){ .live-demo-image-link{margin:0 8px;} }
