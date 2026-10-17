@@ -1984,3 +1984,21 @@ dialog {
 .page-experience .role-video {
   display: none !important;
 }
+
+/* Before/after photo comparisons */
+.photo-edit-intro { margin: 0 0 22px; color: var(--text-soft); }
+.photo-edit-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.photo-edit-card { min-width: 0; padding: 16px; border: 1px solid var(--line); border-radius: 22px; background: var(--panel); box-shadow: var(--glow); }
+.photo-edit-card h3 { margin: 0 0 14px; color: var(--text); }
+.photo-comparison { position: relative; aspect-ratio: 2 / 3; overflow: hidden; border-radius: 14px; background: #18191d; isolation: isolate; }
+.photo-comparison > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; user-select: none; pointer-events: none; }
+.photo-comparison .photo-comparison-edited { clip-path: inset(0 0 0 var(--split)); background: #18191d; }
+.photo-label { position: absolute; top: 12px; padding: 5px 10px; border-radius: 20px; background: #18191de6; color: #fff; font-size: .75rem; pointer-events: none; }
+.photo-label-raw { left: 10px; }
+.photo-label-edited { right: 10px; }
+.photo-divider { position: absolute; top: 0; bottom: 0; left: var(--split); width: 2px; background: #fff; transform: translateX(-50%); pointer-events: none; }
+.photo-divider > span { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: #fff; color: #24262b; box-shadow: 0 2px 12px #0006; font-size: 24px; }
+.photo-comparison .photo-slider { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; padding: 0; opacity: 0; cursor: ew-resize; touch-action: pan-y; }
+.photo-comparison:focus-within { outline: 3px solid var(--pink); outline-offset: 4px; }
+@media (max-width: 900px) { .photo-edit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .photo-edit-grid { grid-template-columns: 1fr; } }

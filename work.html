@@ -55,10 +55,10 @@
     rel="stylesheet"
   />
 
-<link rel="stylesheet" href="styles.css?v=12" />
+<link rel="stylesheet" href="styles.css?v=13" />
 <link rel="stylesheet" href="neumorphic.css?v=2" />
 <link rel="stylesheet" href="typography-cleanup.css?v=5" />
-<script defer src="script.js?v=15"></script>
+<script defer src="script.js?v=16"></script>
 <script defer src="theme-toggle.js?v=2"></script>
 </head>
 
@@ -192,7 +192,7 @@
         </h2>
 
         <p>
-          Explore graphic-design samples, web-development projects,
+          Explore graphic-design samples, photo edits, web-development projects,
           live application demos, and video-editing work.
         </p>
 
@@ -213,6 +213,10 @@
           data-work="graphic-design"
         >
           Graphic Design
+        </button>
+
+        <button class="work-tab" type="button" role="tab" aria-selected="false" data-work="photo-edit" id="tab-photo-edit" aria-controls="panel-photo-edit">
+          Photo Edit
         </button>
 
         <button
@@ -239,6 +243,46 @@
           Video Editing
         </button>
 
+      </div>
+
+      <!-- Photo Edit -->
+      <div class="work-panel" data-work-panel="photo-edit" id="panel-photo-edit" role="tabpanel" aria-labelledby="tab-photo-edit" hidden>
+        <p class="photo-edit-intro">From the original photo to the finished edit. Drag the slider left or right to compare.</p>
+        <div class="photo-edit-grid">
+          <article class="photo-edit-card">
+            <h3>Moonlight Princess</h3>
+            <div class="photo-comparison" style="--split: 50%">
+              <img src="photo-edits/moonlight-princess-raw.webp" alt="Moonlight Princess: original photograph" loading="lazy" draggable="false" width="1200" height="1800" />
+              <img class="photo-comparison-edited" src="photo-edits/moonlight-princess-edited.webp" alt="Moonlight Princess: finished photo edit" loading="lazy" draggable="false" width="1200" height="1800" />
+              <span class="photo-label photo-label-raw" aria-hidden="true">Raw</span>
+              <span class="photo-label photo-label-edited" aria-hidden="true">Edited</span>
+              <span class="photo-divider" aria-hidden="true"><span>↔</span></span>
+              <input class="photo-slider" type="range" min="0" max="100" value="50" aria-label="Compare raw and edited Moonlight Princess" aria-valuetext="50% raw, 50% edited" />
+            </div>
+          </article>
+          <article class="photo-edit-card">
+            <h3>Last Turn</h3>
+            <div class="photo-comparison" style="--split: 50%">
+              <img src="photo-edits/last-turn-raw.webp" alt="Last Turn: original photograph" loading="lazy" draggable="false" width="1200" height="1800" />
+              <img class="photo-comparison-edited" src="photo-edits/last-turn-edited.webp" alt="Last Turn: finished photo edit" loading="lazy" draggable="false" width="1200" height="1800" />
+              <span class="photo-label photo-label-raw" aria-hidden="true">Raw</span>
+              <span class="photo-label photo-label-edited" aria-hidden="true">Edited</span>
+              <span class="photo-divider" aria-hidden="true"><span>↔</span></span>
+              <input class="photo-slider" type="range" min="0" max="100" value="50" aria-label="Compare raw and edited Last Turn" aria-valuetext="50% raw, 50% edited" />
+            </div>
+          </article>
+          <article class="photo-edit-card">
+            <h3>Aubree</h3>
+            <div class="photo-comparison" style="--split: 50%">
+              <img src="photo-edits/aubree-raw.webp" alt="Aubree: original photograph" loading="lazy" draggable="false" width="1200" height="1800" />
+              <img class="photo-comparison-edited" src="photo-edits/aubree-edited.webp" alt="Aubree: finished photo edit" loading="lazy" draggable="false" width="1200" height="1800" />
+              <span class="photo-label photo-label-raw" aria-hidden="true">Raw</span>
+              <span class="photo-label photo-label-edited" aria-hidden="true">Edited</span>
+              <span class="photo-divider" aria-hidden="true"><span>↔</span></span>
+              <input class="photo-slider" type="range" min="0" max="100" value="50" aria-label="Compare raw and edited Aubree" aria-valuetext="50% raw, 50% edited" />
+            </div>
+          </article>
+        </div>
       </div>
 
       <!-- Graphic Design -->

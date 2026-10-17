@@ -427,3 +427,32 @@ const saberSelector = [
 
   targets.forEach(addSaberTracer);
 })();
+
+// Each comparison keeps both photos stationary while the divider reveals them.
+document.querySelectorAll('.photo-slider').forEach((slider) => {
+  const comparison = slider.closest('.photo-comparison');
+  const update = () => {
+    const value = Number(slider.value);
+    comparison.style.setProperty('--split', `${value}%`);
+    slider.setAttribute('aria-valuetext', `${value}% raw, ${100 - value}% edited`);
+  };
+  slider.addEventListener('input', update);
+  const move = (event) => {
+    const bounds = comparison.getBoundingClientRect();
+    slider.value = Math.round(Math.max(0, Math.min(100, (event.clientX - bounds.left) / bounds.width * 100)));
+    update();
+  };
+  slider.addEventListener('pointerdown', (event) => {
+    if (event.button !== 0) return;
+    slider.focus();
+    slider.setPointerCapture(event.pointerId);
+    move(event);
+    event.preventDefault();
+  });
+  slider.addEventListener('pointermove', (event) => {
+    if (slider.hasPointerCapture(event.pointerId)) move(event);
+  });
+  slider.addEventListener('pointerup', (event) => {
+    if (slider.hasPointerCapture(event.pointerId)) slider.releasePointerCapture(event.pointerId);
+  });
+});
