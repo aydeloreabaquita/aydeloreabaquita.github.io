@@ -699,10 +699,10 @@ if (!layer.querySelector('canvas')) reveal();
 const entranceBlocks = [...document.querySelectorAll('body > header, main > .hero > .hero-copy, main > .hero > .hero-card, main > .hero > .hero-stats > *, main > section:not(.hero), body > footer, body > .theme-toggle')];
 entranceBlocks.forEach((element,index) => {
  element.classList.add('portfolio-entrance');
- element.style.setProperty('--entrance-delay', `${5 + index * 0.5}s`);
+ element.style.setProperty('--entrance-delay', `${2 + index * 0.5}s`);
 });
 document.documentElement.classList.add('threads-staged');
-setTimeout(reveal, (7 + Math.max(0, entranceBlocks.length - 1) * 0.5) * 1000);
+setTimeout(reveal, (2.5 + Math.max(0, entranceBlocks.length - 1) * 0.5) * 1000);
 window.addEventListener('keydown',reveal,{once:true});
 window.addEventListener('pagehide',()=>{dispose?.();theme.disconnect();});
 window.addEventListener('pageshow',event=>{if(event.persisted){start();theme.observe(document.body,{attributes:true,attributeFilter:['data-theme']});}});
