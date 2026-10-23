@@ -33,7 +33,7 @@ const signed = value => (value > 0 ? `+${value}` : value < 0 ? `−${-value}` : 
 function mountTechText(element) {
 if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 const settingsRef = { current: { text: element.textContent.trim(), fontFamily: '', fontWeight: Number(getComputedStyle(element).fontWeight) || 700,
-fontSize: parseFloat(getComputedStyle(element).fontSize), letterSpacing: 0, color: 'currentColor', accentColor: 'currentColor', align: 'center', reach: 200, softness: 0.7, dashLength: 4, dashGap: 2, strokeWidth: 1, lineStyle: 'dashed', reveal: 'letter', specks: 15, selection: true, labels: false, draggable: false, bounce: 0.4, sweep: true, speed: 1, clickKick: false, intro: 'none', introDuration: 2, guides: false } };
+fontSize: parseFloat(getComputedStyle(element).fontSize), letterSpacing: -0.06, color: 'currentColor', accentColor: 'currentColor', align: 'left', reach: 200, softness: 0.7, dashLength: 4, dashGap: 2, strokeWidth: 1, lineStyle: 'dashed', reveal: 'letter', specks: 15, selection: true, labels: false, draggable: false, bounce: 0.4, sweep: true, speed: 1, clickKick: false, intro: 'none', introDuration: 2, guides: false } };
 const wakeRef = { current: () => {} };
 const canvasNode = document.createElement("canvas");
 canvasNode.setAttribute("aria-hidden", "true");
@@ -922,5 +922,5 @@ element.appendChild(canvasNode);
       container.removeEventListener('pointerleave', onLeave);
     };
 }
-document.querySelectorAll(".brand-copy strong").forEach(mountTechText);
+document.querySelectorAll(".tech-name").forEach(mountTechText);
 })();

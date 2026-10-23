@@ -1,8 +1,12 @@
-/* Limit TechText to the existing header name. DOM text preserves its accessible name. */
-.brand-copy strong { position: relative; }
-.brand-copy strong canvas { position: absolute; inset: -0.45em -0.75em; width: calc(100% + 1.5em); height: calc(100% + 0.9em); pointer-events: none; }
-.brand-copy strong.tech-name-ready { -webkit-text-fill-color: transparent; text-shadow: none; }
+/* Preserve the heading font and its DOM text while drawing the decorative effect. */
+.hero h1 .tech-name { display: block; position: relative; line-height: 1.08; }
+.tech-name canvas { position: absolute; inset: -0.2em -5.5556%; width: 111.1111%; height: 1.5em; pointer-events: none; }
+.tech-name.tech-name-ready { -webkit-text-fill-color: transparent; text-shadow: none; }
+.site-header .brand { justify-content: center; align-self: stretch; min-width: 170px; padding-left: 0; }
+.site-header .brand-copy { align-content: center; justify-items: center; text-align: center; }
+.site-header .brand-copy small { margin-top: 0; }
+@media (max-width: 760px) { .site-header .brand { min-width: 0; } }
 @media (prefers-reduced-motion: reduce) {
-  .brand-copy strong canvas { display: none; }
-  .brand-copy strong.tech-name-ready { -webkit-text-fill-color: currentColor; }
+  .tech-name canvas { display: none; }
+  .tech-name.tech-name-ready { -webkit-text-fill-color: currentColor; }
 }
