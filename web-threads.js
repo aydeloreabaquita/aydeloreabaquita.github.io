@@ -685,7 +685,7 @@ const reveal = () => {
  try { sessionStorage.setItem('portfolio-threads-intro','seen'); } catch {}
 };
 if (!layer.querySelector('canvas')) reveal();
-setTimeout(reveal, 6300);
+setTimeout(reveal, 8000);
 window.addEventListener('keydown',reveal,{once:true});
 window.addEventListener('pagehide',()=>{dispose?.();theme.disconnect();});
 window.addEventListener('pageshow',event=>{if(event.persisted){start();theme.observe(document.body,{attributes:true,attributeFilter:['data-theme']});}});
