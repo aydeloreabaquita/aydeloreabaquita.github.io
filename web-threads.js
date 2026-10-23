@@ -685,7 +685,14 @@ const reveal = () => {
  try { sessionStorage.setItem('portfolio-threads-intro','seen'); } catch {}
 };
 if (!layer.querySelector('canvas')) reveal();
-setTimeout(reveal, 8000);
+// Stagger independent blocks; never animate an ancestor and its child together.
+const entranceBlocks = [...document.querySelectorAll('body > header, main > .hero > .hero-copy, main > .hero > .hero-card, main > .hero > .hero-stats > *, main > section:not(.hero), body > footer, body > .theme-toggle')];
+entranceBlocks.forEach((element,index) => {
+ element.classList.add('portfolio-entrance');
+ element.style.setProperty('--entrance-delay', `${5 + index * 0.8}s`);
+});
+document.documentElement.classList.add('threads-staged');
+setTimeout(reveal, (10 + Math.max(0, entranceBlocks.length - 1) * 0.8) * 1000);
 window.addEventListener('keydown',reveal,{once:true});
 window.addEventListener('pagehide',()=>{dispose?.();theme.disconnect();});
 window.addEventListener('pageshow',event=>{if(event.persisted){start();theme.observe(document.body,{attributes:true,attributeFilter:['data-theme']});}});
