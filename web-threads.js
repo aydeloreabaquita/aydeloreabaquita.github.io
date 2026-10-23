@@ -1,5 +1,13 @@
 // Adapted from the supplied React Bits WebThreads component for this static portfolio.
 (() => {
+// Keep one animation timeline across the site's separate HTML pages.
+let timelineStart = Date.now();
+try {
+ const saved = Number(sessionStorage.getItem('portfolio-threads-start'));
+ if (Number.isFinite(saved) && saved > 0 && saved <= Date.now()) timelineStart = saved;
+ else sessionStorage.setItem('portfolio-threads-start', String(timelineStart));
+} catch {}
+const elapsed = () => Math.max(0, (Date.now() - timelineStart) / 1000);
 const ROOT = 'web-threads-container';
 const CANVAS = 'web-threads-canvas';
 
@@ -460,12 +468,12 @@ function mountWebThreads({
     const state = {
       width: 1,
       height: 1,
-      phase: 0,
-      clock: 0,
+      phase: elapsed() * settingsRef.current.speed,
+      clock: elapsed(),
       last: 0,
       raf: 0,
       visible: false,
-      introAt: -1,
+      introAt: 0,
       pointer: [0.5, 0.5],
       inside: false,
       presence: 0,
@@ -583,9 +591,9 @@ function mountWebThreads({
       const dt = state.last ? Math.min((now - state.last) / 1000, 0.1) : 1 / 60;
       state.last = now;
       const reduced = prefersReduced();
-      state.clock += dt;
+      state.clock = elapsed();
       if (state.introAt < 0) state.introAt = state.clock;
-      if (!s.paused && !reduced) state.phase += dt * s.speed;
+      if (!s.paused && !reduced) state.phase = state.clock * s.speed;
       const focusing = updateFocus(s, dt, reduced);
       state.surges = state.surges.filter(
         surge => state.clock - surge.at < SURGE_SECONDS + (s.count - 1) * SURGE_STAGGER
@@ -674,10 +682,12 @@ layer.className = 'web-threads-container';
 layer.setAttribute('aria-hidden','true');
 document.body.prepend(layer);
 const css = () => getComputedStyle(document.body);
-const options = () => ({colors:[css().getPropertyValue('--pink').trim(),css().getPropertyValue('--violet').trim()], coreColor:css().getPropertyValue('--text').trim(), lightMode:document.body.dataset.theme !== 'dark', dpr:1, threadCount:6, brightness:0.65, mouseInteraction:true, grain:0.025});
+const options = () => ({colors:[css().getPropertyValue('--pink').trim(),css().getPropertyValue('--violet').trim()], coreColor:css().getPropertyValue('--text').trim(), lightMode:document.body.dataset.theme !== 'dark', dpr:1, threadCount:6, brightness:0.65, mouseInteraction:true, grain:0.025, intro:document.documentElement.classList.contains('threads-opening') && elapsed() < 2});
 let dispose;
 function start() { dispose?.(); dispose = mountWebThreads(options()); }
 start();
+// Mark the opening immediately so navigation during its reveal never replays it.
+try { sessionStorage.setItem('portfolio-threads-intro','seen'); } catch {}
 const theme = new MutationObserver(start);
 theme.observe(document.body,{attributes:true,attributeFilter:['data-theme']});
 const reveal = () => {
