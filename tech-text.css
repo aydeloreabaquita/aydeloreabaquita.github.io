@@ -1,0 +1,8 @@
+/* Limit TechText to the existing header name. DOM text preserves its accessible name. */
+.brand-copy strong { position: relative; }
+.brand-copy strong canvas { position: absolute; inset: -0.45em -0.75em; width: calc(100% + 1.5em); height: calc(100% + 0.9em); pointer-events: none; }
+.brand-copy strong.tech-name-ready { -webkit-text-fill-color: transparent; text-shadow: none; }
+@media (prefers-reduced-motion: reduce) {
+  .brand-copy strong canvas { display: none; }
+  .brand-copy strong.tech-name-ready { -webkit-text-fill-color: currentColor; }
+}
